@@ -2,10 +2,43 @@
     "parser": "@typescript-eslint/parser",
     "plugins": ["@typescript-eslint"],
     "extends": [
-      "plugin:@typescript-eslint/recommended"
+      "plugin:@typescript-eslint/recommended",
+      "plugin:@typescript-eslint/stylistic",
+      "eslint:recommended"
     ],
+    "parserOptions": {
+      "project": ["tsconfig.json"],
+      "sourceType": "module"
+    },
+    "env": {
+      "browser": true,
+      "es2021": true
+    },
     "rules": {
-     
+      "semi": ["error", "always"],
+      "quotes": ["error", "single"],
+      "no-console": "warn",
+      "no-debugger": "warn",
+      "no-trailing-spaces": "error",
+
+      // TypeScript-specific rules
+      "@typescript-eslint/no-explicit-any": "warn",
+      "@typescript-eslint/explicit-function-return-type": "off",
+      "@typescript-eslint/no-inferrable-types": "off",
+      "@typescript-eslint/no-unused-vars": ["warn", { "argsIgnorePattern": "^_" }],
+      "@typescript-eslint/member-delimiter-style": [
+        "error",
+        {
+          "multiline": {
+            "delimiter": "semi",
+            "requireLast": true
+          },
+          "singleline": {
+            "delimiter": "semi",
+            "requireLast": false
+          }
+        }
+      ]
     }
   }
   
