@@ -1,0 +1,92 @@
+{
+  "root": true,
+  "ignorePatterns": ["projects/**/*"],
+  "overrides": [
+    {
+      "files": ["*.ts"],
+      "parser": "@typescript-eslint/parser",
+      "parserOptions": {
+        "project": ["tsconfig.json"],
+        "createDefaultProgram": true
+      },
+      "plugins": ["@typescript-eslint", "@angular-eslint"],
+      "extends": [
+        "plugin:@angular-eslint/recommended",
+        "plugin:@angular-eslint/ng-cli-compat",
+        "plugin:@angular-eslint/ng-cli-compat--formatting-add-on",
+        "plugin:@typescript-eslint/recommended",
+        "plugin:@typescript-eslint/stylistic",
+        "plugin:@typescript-eslint/recommended-requiring-type-checking",
+        "eslint:recommended"
+      ],
+      "rules": {
+        "semi": ["error", "always"],
+        "quotes": ["error", "single"],
+        "no-console": "warn",
+        "no-debugger": "warn",
+        "no-trailing-spaces": "error",
+        "eqeqeq": ["error", "always"],
+        "curly": "error",
+        "brace-style": ["error", "1tbs"],
+        "comma-dangle": ["error", "always-multiline"],
+        "object-curly-spacing": ["error", "always"],
+        "space-before-function-paren": ["error", "never"],
+        "indent": ["error", 2],
+        "max-lines": ["warn", 300],
+        "max-len": ["error", {
+        "code": 140,
+        "tabWidth": 2,
+        "ignoreComments": true,
+        "ignoreUrls": true,
+        "ignoreStrings": true,
+        "ignoreTemplateLiterals": true
+      }],
+
+        "no-multiple-empty-lines": ["error", { "max": 1 }],
+        "prefer-const": "error",
+
+        "@typescript-eslint/no-explicit-any": "warn",
+        "@typescript-eslint/explicit-function-return-type": "off",
+        "@typescript-eslint/no-inferrable-types": "off",
+        "@typescript-eslint/no-unused-vars": ["warn", { "argsIgnorePattern": "^_" }],
+        "@typescript-eslint/member-delimiter-style": [
+          "error",
+          {
+            "multiline": {
+              "delimiter": "semi",
+              "requireLast": true
+            },  
+            "singleline": {
+              "delimiter": "semi",
+              "requireLast": false
+            }
+          }
+        ],
+        "@angular-eslint/component-selector": [
+          "error",
+          {
+            "type": "element",
+            "prefix": "app",
+            "style": "kebab-case"
+          }
+        ],
+        "@angular-eslint/directive-selector": [
+          "error",
+          {
+            "type": "attribute",
+            "prefix": "app",
+            "style": "camelCase"
+          }
+        ]
+      }
+    },
+    {
+      "files": ["*.html"],
+      "extends": ["plugin:@angular-eslint/template/recommended"],
+      "rules": {
+        "max-len": ["error", { "code": 140 }],
+        "accessibility-alt-text": "warn"
+      }
+    }
+  ]
+}

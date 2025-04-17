@@ -52,6 +52,14 @@ For end-to-end (e2e) testing, run:
 ng e2e
 ```
 
+## Linting
+
+To analyze and check our code for potential issues and enforce coding style rules, run:
+
+```bash
+npm run lint
+
+
 Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
 
 ## Additional Resources
