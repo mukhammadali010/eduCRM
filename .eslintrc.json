@@ -33,7 +33,15 @@
         "space-before-function-paren": ["error", "never"],
         "indent": ["error", 2],
         "max-lines": ["warn", 300],
-        "max-len": ["error", { "code": 140 }],
+        "max-len": ["error", {
+        "code": 140,
+        "tabWidth": 2,
+        "ignoreComments": true,
+        "ignoreUrls": true,
+        "ignoreStrings": true,
+        "ignoreTemplateLiterals": true
+      }],
+
         "no-multiple-empty-lines": ["error", { "max": 1 }],
         "prefer-const": "error",
 
