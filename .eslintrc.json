@@ -33,6 +33,7 @@
         "space-before-function-paren": ["error", "never"],
         "indent": ["error", 2],
         "max-lines": ["warn", 300],
+        "max-len": ["error", { "code": 140 }],
         "no-multiple-empty-lines": ["error", { "max": 1 }],
         "prefer-const": "error",
 
