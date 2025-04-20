@@ -8,5 +8,10 @@ import { RouterOutlet } from '@angular/router';
   styleUrl: './app.component.scss',
 })
 export class AppComponent {
+  test: string = 'test';
   title = 'eduCRM';
+
+  testMethod() {
+    console.log(this.test);
+  }
 }

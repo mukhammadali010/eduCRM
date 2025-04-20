@@ -13,5 +13,5 @@
     "htmlWhitespaceSensitivity": "css",
     "endOfLine": "lf",
     "embeddedLanguageFormatting": "auto",
-    "plugins": ["prettier-plugin-organize-html"]
+    "plugins": ["prettier-plugin-tailwindcss"]
   }
