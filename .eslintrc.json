@@ -1,65 +1,26 @@
 {
   "root": true,
-  "ignorePatterns": ["projects/**/*"],
+  "ignorePatterns": [
+    "projects/**/*"
+  ],
   "overrides": [
     {
-      "files": ["*.ts"],
-      "parser": "@typescript-eslint/parser",
-      "parserOptions": {
-        "project": ["tsconfig.json"],
-        "createDefaultProgram": true
-      },
-      "plugins": ["@typescript-eslint", "@angular-eslint"],
+      "files": [
+        "*.ts"
+      ],
       "extends": [
-        "plugin:@angular-eslint/recommended",
-        "plugin:@angular-eslint/ng-cli-compat",
-        "plugin:@angular-eslint/ng-cli-compat--formatting-add-on",
+        "eslint:recommended",
         "plugin:@typescript-eslint/recommended",
-        "plugin:@typescript-eslint/stylistic",
-        "plugin:@typescript-eslint/recommended-requiring-type-checking",
-        "eslint:recommended"
+        "plugin:@angular-eslint/recommended",
+        "plugin:@angular-eslint/template/process-inline-templates"
       ],
       "rules": {
-        "semi": ["error", "always"],
-        "quotes": ["error", "single"],
-        "no-console": "warn",
-        "no-debugger": "warn",
-        "no-trailing-spaces": "error",
-        "eqeqeq": ["error", "always"],
-        "curly": "error",
-        "brace-style": ["error", "1tbs"],
-        "comma-dangle": ["error", "always-multiline"],
-        "object-curly-spacing": ["error", "always"],
-        "space-before-function-paren": ["error", "never"],
-        "indent": ["error", 2],
-        "max-lines": ["warn", 300],
-        "max-len": ["error", {
-        "code": 140,
-        "tabWidth": 2,
-        "ignoreComments": true,
-        "ignoreUrls": true,
-        "ignoreStrings": true,
-        "ignoreTemplateLiterals": true
-      }],
-
-        "no-multiple-empty-lines": ["error", { "max": 1 }],
-        "prefer-const": "error",
-
-        "@typescript-eslint/no-explicit-any": "warn",
-        "@typescript-eslint/explicit-function-return-type": "off",
-        "@typescript-eslint/no-inferrable-types": "off",
-        "@typescript-eslint/no-unused-vars": ["warn", { "argsIgnorePattern": "^_" }],
-        "@typescript-eslint/member-delimiter-style": [
+        "@angular-eslint/directive-selector": [
           "error",
           {
-            "multiline": {
-              "delimiter": "semi",
-              "requireLast": true
-            },  
-            "singleline": {
-              "delimiter": "semi",
-              "requireLast": false
-            }
+            "type": "attribute",
+            "prefix": "app",
+            "style": "camelCase"
           }
         ],
         "@angular-eslint/component-selector": [
@@ -70,22 +31,56 @@
             "style": "kebab-case"
           }
         ],
-        "@angular-eslint/directive-selector": [
-          "error",
-          {
-            "type": "attribute",
-            "prefix": "app",
-            "style": "camelCase"
-          }
+        "@angular-eslint/contextual-lifecycle": [
+          "error"
+        ],
+        "@angular-eslint/component-class-suffix": [
+          "error"
+        ],
+        "@angular-eslint/no-empty-lifecycle-method": [
+          "error"
+        ],
+        "@angular-eslint/no-input-rename": [
+          "error"
+        ],
+        "@angular-eslint/no-inputs-metadata-property": [
+          "error"
+        ],
+        "@angular-eslint/no-output-native": [
+          "error"
+        ],
+        "@angular-eslint/no-output-on-prefix": [
+          "error"
+        ],
+        "@angular-eslint/no-output-rename": [
+          "error"
+        ],
+        "@angular-eslint/no-outputs-metadata-property": [
+          "error"
+        ],
+        "@angular-eslint/use-pipe-transform-interface": [
+          "error"
         ]
       }
     },
     {
-      "files": ["*.html"],
-      "extends": ["plugin:@angular-eslint/template/recommended"],
+      "files": [
+        "*.html"
+      ],
+      "extends": [
+        "plugin:@angular-eslint/template/recommended",
+        "plugin:@angular-eslint/template/accessibility"
+      ],
       "rules": {
-        "max-len": ["error", { "code": 140 }],
-        "accessibility-alt-text": "warn"
+        "@angular-eslint/template/banana-in-box": [
+          "error"
+        ],
+        "@angular-eslint/template/eqeqeq": [
+          "error"
+        ],
+        "@angular-eslint/template/no-negated-async": [
+          "error"
+        ]
       }
     }
   ]
