@@ -59,6 +59,14 @@ To analyze and check our code for potential issues and enforce coding style rule
 ```bash
 npm run lint
 
+```
+
+## Prettier
+
+To automatically format your code and ensure consistent style across the project, run:
+
+```bash
+npm run format
 
 Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
 
