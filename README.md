@@ -68,6 +68,13 @@ To automatically format your code and ensure consistent style across the project
 ```bash
 npm run format
 
+```
+### CI/CD and Firebase:
+1. **CI/CD Pipeline**: Full explanation on how **CI** and **CD** are configured using **GitHub Actions** for testing, building, and deploying the project.
+2. **Firebase Hosting**: Clear instructions on how the project is deployed to Firebase Hosting, including the live URL and benefits of using Firebase Hosting.
+
+```
+
 Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
 
 ## Additional Resources
