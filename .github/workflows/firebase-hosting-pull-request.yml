@@ -17,7 +17,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: 20  # 👈 Bu qadam qo'shildi (Node 20 ni o'rnatadi)
+          node-version: 20  
 
       - run: npm ci
       - run: npm run build
