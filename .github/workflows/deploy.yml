@@ -6,45 +6,32 @@ on:
       - main
 
 jobs:
-  lint:
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
-
-      - name: Set up Node.js
-        uses: actions/setup-node@v2
-        with:
-          node-version: '18'
-
-      - name: Install dependencies
-        run: npm install
-
-      - name: Run linter
-        run: npm run lint
-
   deploy:
-    needs: lint 
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v2
-      
+        uses: actions/checkout@v4
+
       - name: Set up Node.js
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v3
         with:
-          node-version: '18'
-      
+          node-version: 20
+
       - name: Install dependencies
-        run: npm install
-      
-      - name: Build project
-        run: npm run build
-      
-      - name: Deploy to Firebase
-        uses: wzieba/Firebase-Action@v2
+        run: npm ci
+
+      - name: Build Angular project
+        run: npm run build -- --configuration=production
+
+      - name: Authenticate to Firebase
+        uses: google-github-actions/auth@v2
         with:
-          firebase_service_account: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_EDUCRM_9B140 }}
-          project_id: your-firebase-project-id
+          credentials_json: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_EDUCRM_9B140 }}'
+
+      - name: Deploy to Firebase Hosting
+        uses: FirebaseExtended/action-hosting-deploy@v0
+        with:
+          repoToken: "${{ secrets.GITHUB_TOKEN }}"
+          channelId: live
+          projectId: educrm-9b140
