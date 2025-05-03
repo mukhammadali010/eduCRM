@@ -1,6 +1,6 @@
 {
   "hosting": {
-    "public": "dist/edu-crm",
+    "public": "dist/edu-crm/browser/",
     "ignore": [
       "firebase.json",
       "**/.*",
