@@ -1,4 +1,3 @@
-// src/app/firebase-config.ts
 export const FIREBASE_CONFIG = {
   apiKey: 'AIzaSyBopMVmg2yLb7IQaKjHzLkZ62ti06Xxu3M',
   authDomain: 'educrm-9b140.firebaseapp.com',
