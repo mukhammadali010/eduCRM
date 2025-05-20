@@ -1,13 +1,13 @@
 export const environment = {
     production: false,
     firebaseConfig: {
-        apiKey: 'AIzaSyBopMVmg2yLb7IQaKjHzLkZ62ti06Xxu3M',
-        authDomain: 'educrm-9b140.firebaseapp.com',
-        projectId: 'educrm-9b140',
-        storageBucket: 'educrm-9b140.appspot.com',
-        messagingSenderId: '499608059463',
-        appId: '1:499608059463:web:a654984e8c55f72a797b62',
-        measurementId: 'G-74GX95HFNJ',
+        apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
+        authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
+        projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID,
+        storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET,
+        messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID,
+        appId: import.meta.env.VITE_FIREBASE_APP_ID,
+        measurementId: import.meta.env.VITE_FIREBASE_MEASUREMENT_ID,
     }
-  };
+};
   
