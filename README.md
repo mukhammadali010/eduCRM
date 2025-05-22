@@ -73,13 +73,13 @@ npm run format
 Triggers on every push or pull request to the main branch.
 Runs:
 
-npm install to install dependencies
+`npm install` to install dependencies
 
-npm run lint for lint checks
+`npm run lint` for lint checks
 
-npm run test for unit tests
+`npm run test` for unit tests
 
-npm run build to build the app
+`npm run build` to build the app
 
 ```
 ```

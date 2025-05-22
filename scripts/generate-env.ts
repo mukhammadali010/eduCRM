@@ -2,7 +2,13 @@ import * as fs from 'fs';
 import * as dotenv from 'dotenv';
 
 dotenv.config();
+const requiredEnvVars = ['API_KEY', 'AUTH_DOMAIN', 'PROJECT_ID', 'STORAGE_BUCKET', 'MESSAGING_SENDER_ID', 'APP_ID', 'MEASUREMENT_ID'];
 
+for (const envVar of requiredEnvVars) {
+  if (!process.env[envVar]) {
+    throw new Error(`Missing required environment variable: ${envVar}`);
+  }
+}
 const targetPath = './src/environments/environment.prod.ts';
 const envFileContent = `export const environment = {
   production: true,
