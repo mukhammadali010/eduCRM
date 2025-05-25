@@ -11,7 +11,7 @@
     "lint": "ng lint",
     "format": "prettier --write \"src/**/*.{ts,html,scss}\"",
     "format:check": "prettier --check \"src/**/*.{ts,html,scss}\"",
-    "generate-env": "ts-node scripts/generate-env.ts",
+    "generate-env": "ts-node-esm scripts/generate-env.ts",
     "build:prod": "npm run generate-env && ng build --configuration production"
   },
   "private": true,
