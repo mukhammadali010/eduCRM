@@ -34,6 +34,10 @@ jobs:
 
       - name: Build Angular project
         run: npm run build -- --configuration=production
+      - name: Authenticate to Google Cloud
+        uses: google-github-actions/auth@v2
+        with:
+          credentials_json: ${{ secrets.GCLOUD_CREDENTIALS }}
 
       - name: Authenticate to Firebase
         uses: google-github-actions/auth@v2
