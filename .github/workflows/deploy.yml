@@ -39,11 +39,14 @@ jobs:
         uses: google-github-actions/auth@v2
         with:
           credentials_json: ${{ secrets.GCLOUD_CREDENTIALS }}
+          
+      - name: Debug projectId
+        run: echo "PROJECT_ID=${{ secrets.FIREBASE_PROJECT_ID }}"
 
       - name: Deploy to Firebase Hosting
         uses: FirebaseExtended/action-hosting-deploy@v0
         with:
-          repoToken: "${{ secrets.GITHUB_TOKEN }}"
           firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_EDUCRM_9B140 }}'
-          channelId: live
+          repoToken: "${{ secrets.GITHUB_TOKEN }}"
           projectId: ${{ secrets.FIREBASE_PROJECT_ID }}
+          channelId: live
