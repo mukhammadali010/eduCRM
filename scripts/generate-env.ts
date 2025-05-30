@@ -15,14 +15,11 @@ const requiredEnvVars = [
   'VITE_FIREBASE_MEASUREMENT_ID',
 ];
 
-// Check if all required env variables are present
 for (const key of requiredEnvVars) {
   if (!process.env[key]) {
     throw new Error(`❌ Missing required environment variable: ${key}`);
   }
 }
-
-// Generate environment.prod.ts
 const targetPath = './src/environments/environment.prod.ts';
 const envFileContent = `export const environment = {
   production: true,
