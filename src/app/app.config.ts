@@ -9,6 +9,13 @@ export const appConfig: ApplicationConfig = {
   providers: [
     provideZoneChangeDetection({ eventCoalescing: true }),
     provideRouter(routes),
-    provideFirebaseApp(() => initializeApp(environment.firebaseConfig)),
+    provideFirebaseApp(() => {
+      try {
+        return initializeApp(environment.firebaseConfig);
+      } catch (error) {
+        console.error('Error initializing Firebase:', error);
+        return initializeApp(environment.firebaseConfig);
+      }
+    }),
   ],
 };

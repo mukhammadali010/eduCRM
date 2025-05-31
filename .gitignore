@@ -40,6 +40,9 @@ testem.log
 # System files
 .DS_Store
 Thumbs.db
+*.key.pem
+src/environments/environment.prod.ts
+src/environments/environment.ts
 .env
 
 # cache file
