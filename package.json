@@ -42,9 +42,11 @@
     "@types/dotenv": "^8.2.3",
     "@types/http-proxy": "^1.17.16",
     "@types/jasmine": "~5.1.0",
+    "@types/node": "^22.15.29",
     "@typescript-eslint/eslint-plugin": "7.11.0",
     "@typescript-eslint/parser": "7.11.0",
     "angular-eslint": "19.3.0",
+    "autoprefixer": "^10.4.21",
     "dotenv": "^16.5.0",
     "eslint": "8.57.0",
     "eslint-config-prettier": "^10.1.2",
@@ -54,9 +56,11 @@
     "karma-coverage": "~2.2.0",
     "karma-jasmine": "~5.1.0",
     "karma-jasmine-html-reporter": "~2.1.0",
+    "postcss": "^8.4.35",
     "prettier": "3.5.3",
     "prettier-plugin-organize-attributes": "^1.0.0",
     "prettier-plugin-tailwindcss": "^0.6.11",
+    "tailwindcss": "^3.4.1",
     "typescript": "~5.7.2",
     "typescript-eslint": "8.27.0"
   }

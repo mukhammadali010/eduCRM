@@ -89,6 +89,16 @@ Automatically deploys the build to Firebase Hosting after successful CI steps.
 Deployment is triggered only on push to the main branch.
 
 ```
+
+```
+### Tailwind CSS
+Tailwind CSS has been installed and configured via tailwind.config.js.
+
+Custom colors, fonts, animations, and breakpoints are added for consistent styling.
+
+Tailwind classes can be used in all ./src/**/*.{html,ts,scss} files.
+
+```
 Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
 
 ## Additional Resources

@@ -32,9 +32,17 @@
               }
             ],
             "styles": [
-              "src/styles.scss"
+              {
+                "input": "src/styles.scss",
+                "bundleName": "styles",
+                "inject": true
+              }
             ],
-            "scripts": []
+            "scripts": [],
+            "stylePreprocessorOptions": {
+              "includePaths": ["src/styles"]
+            }
+           
           },
           "configurations": {
             "production": {
