@@ -12,6 +12,7 @@
     "lint": "ng lint",
     "format": "prettier --write \"src/**/*.{ts,html,scss}\"",
     "format:check": "prettier --check \"src/**/*.{ts,html,scss}\"",
+    "format:write": "prettier --write \"src/**/*.{ts,html,scss}\"",
     "generate-env": "node --loader ts-node/esm scripts/generate-env.ts",
     "build:prod": "npm run generate-env && ng build --configuration production"
   },
