@@ -1,10 +1,5 @@
-import * as fs from 'fs';
-import * as dotenv from 'dotenv';
+import { writeFileSync } from 'fs';
 
-// Load environment variables from .env file
-dotenv.config();
-
-// List of required env variables
 const requiredEnvVars = [
   'FIREBASE_API_KEY',
   'FIREBASE_AUTH_DOMAIN',
@@ -34,5 +29,5 @@ const envFileContent = `export const environment = {
   }
 };`;
 
-fs.writeFileSync(targetPath, envFileContent);
+writeFileSync(targetPath, envFileContent);
 console.log('✅ environment.prod.ts file generated successfully.');
