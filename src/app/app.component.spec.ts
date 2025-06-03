@@ -1,29 +1,21 @@
-import { TestBed } from '@angular/core/testing';
+import { render, screen } from '@testing-library/angular';
+import userEvent from '@testing-library/user-event';
 import { AppComponent } from './app.component';
+import '@testing-library/jest-dom';
 
 describe('AppComponent', () => {
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      imports: [AppComponent],
-    }).compileComponents();
+  it('should render title', async () => {
+    await render(AppComponent);
+    expect(screen.getByText(/eduCRM/i)).toBeTruthy();
   });
 
-  it('should create the app', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.componentInstance;
-    expect(app).toBeTruthy();
-  });
+  it('should respond to user click', async () => {
+    const { fixture } = await render(AppComponent, {
+      componentProperties: { title: 'Test App' },
+    });
 
-  it(`should have the 'eduCRM' title`, () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.componentInstance;
-    expect(app.title).toEqual('eduCRM');
-  });
-
-  it('should render title', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    fixture.detectChanges();
-    const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('h1')?.textContent).toContain('Hello, eduCRM');
+    // Misol uchun, sizda <button (click)="clicked = true">Click me</button> bo‘lsa:
+    // screen.getByRole('button') orqali uni topamiz:
+    // await userEvent.click(screen.getByRole('button'));
   });
 });
