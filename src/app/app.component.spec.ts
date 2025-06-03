@@ -1,6 +1,5 @@
 import { render, screen } from '@testing-library/angular';
 import { AppComponent } from './app.component';
-import '@testing-library/jest-dom';
 
 describe('AppComponent', () => {
   it('should render title', async () => {
@@ -12,9 +11,7 @@ describe('AppComponent', () => {
     await render(AppComponent, {
       componentProperties: { title: 'Test App' },
     });
-
-    // Misol uchun, sizda <button (click)="clicked = true">Click me</button> bo‘lsa:
-    // screen.getByRole('button') orqali uni topamiz:
+    // Example click test (faollashtirish uchun tugma kerak):
     // await userEvent.click(screen.getByRole('button'));
   });
 });
