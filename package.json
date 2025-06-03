@@ -19,6 +19,7 @@
   },
   "private": true,
   "dependencies": {
+    "@angular-architects/ngrx-toolkit": "^19.1.0",
     "@angular-eslint/eslint-plugin-template": "^19.3.0",
     "@angular/animations": "19.2.14",
     "@angular/cdk": "^19.2.18",
@@ -31,6 +32,7 @@
     "@angular/platform-browser": "^19.2.0",
     "@angular/platform-browser-dynamic": "^19.2.0",
     "@angular/router": "^19.2.11",
+    "@ngrx/signals": "^19.2.1",
     "@tailwindcss/postcss": "^4.1.8",
     "firebase": "^11.6.1",
     "rxjs": "~7.8.0",
@@ -47,6 +49,7 @@
     "@angular-eslint/template-parser": "^19.3.0",
     "@angular/cli": "^19.2.4",
     "@angular/compiler-cli": "^19.2.0",
+    "@ngrx/eslint-plugin": "^19.2.1",
     "@playwright/test": "^1.52.0",
     "@softarc/eslint-plugin-sheriff": "^0.18.0",
     "@softarc/sheriff-core": "^0.18.0",
