@@ -1,7 +1,6 @@
 {
   "name": "edu-crm",
   "version": "0.0.0",
-  "type": "module",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -12,7 +11,6 @@
     "lint": "ng lint",
     "format": "prettier --write \"src/**/*.{ts,html,scss}\"",
     "format:check": "prettier --check \"src/**/*.{ts,html,scss}\"",
-    "format:write": "prettier --write \"src/**/*.{ts,html,scss}\"",
     "generate-env": "node --loader ts-node/esm scripts/generate-env.ts",
     "build:prod": "npm run generate-env && ng build --configuration production",
     "prepare": "husky"
@@ -31,10 +29,11 @@
     "@angular/platform-browser": "^19.2.0",
     "@angular/platform-browser-dynamic": "^19.2.0",
     "@angular/router": "^19.2.11",
-    "@tailwindcss/postcss": "^4.1.8",
+    "@tailwindcss/postcss": "^4.1.10",
     "firebase": "^11.6.1",
+    "postcss": "^8.5.5",
     "rxjs": "~7.8.0",
-    "tailwindcss": "^4.1.8",
+    "tailwindcss": "^4.1.10",
     "tslib": "^2.6.2",
     "zone.js": "~0.15.0"
   },
@@ -47,6 +46,7 @@
     "@angular-eslint/template-parser": "^19.3.0",
     "@angular/cli": "^19.2.4",
     "@angular/compiler-cli": "^19.2.0",
+    "@tailwindcss/typography": "^0.5.16",
     "@playwright/test": "^1.52.0",
     "@softarc/eslint-plugin-sheriff": "^0.18.0",
     "@softarc/sheriff-core": "^0.18.0",
