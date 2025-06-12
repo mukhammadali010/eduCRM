@@ -1,4 +1,4 @@
-import * as fs from 'fs';
+import { writeFileSync } from 'fs';
 
 const requiredEnvVars = [
   'FIREBASE_API_KEY',
@@ -29,5 +29,5 @@ const envFileContent = `export const environment = {
   }
 };`;
 
-fs.writeFileSync(targetPath, envFileContent);
+writeFileSync(targetPath, envFileContent);
 console.log('✅ environment.prod.ts file generated successfully.');

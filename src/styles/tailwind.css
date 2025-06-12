@@ -2,143 +2,142 @@
 @plugin "@tailwindcss/typography";
 
 @theme {
-    /* Fonts */
-    --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif;
-    --font-display: 'Satoshi', 'sans-serif';
-  
-    /* Colors */
-    --color-primary-50: oklch(0.97 0.06 120);
-    --color-primary-100: oklch(0.93 0.08 120);
-    --color-primary-200: oklch(0.85 0.12 120);
-    --color-primary-300: oklch(0.75 0.15 120);
-    --color-primary-400: oklch(0.65 0.18 120);
-    --color-primary-500: oklch(0.55 0.2 120);
-    --color-primary-600: oklch(0.4 0.22 120);
-    --color-primary-700: oklch(0.3 0.25 120);
-    --color-primary-800: oklch(0.2 0.3 120);
-    --color-primary-900: oklch(0.1 0.35 120);
-  
-    --color-secondary-50: oklch(0.96 0.05 40);
-    --color-secondary-100: oklch(0.9 0.07 40);
-    --color-secondary-200: oklch(0.8 0.1 40);
-    --color-secondary-300: oklch(0.7 0.12 40);
-    --color-secondary-400: oklch(0.6 0.14 40);
-    --color-secondary-500: oklch(0.5 0.16 40);
-    --color-secondary-600: oklch(0.4 0.18 40);
-    --color-secondary-700: oklch(0.3 0.2 40);
-    --color-secondary-800: oklch(0.2 0.25 40);
-    --color-secondary-900: oklch(0.1 0.3 40);
-  
-    /* Background and text */
-    --color-bg: oklch(0.98 0 0);
-    --color-text: oklch(0.1 0 0);
-  
-    /* Breakpoints */
-    --breakpoint-sm: 640px;
-    --breakpoint-md: 768px;
-    --breakpoint-lg: 1024px;
-    --breakpoint-xl: 1280px;
-    --breakpoint-2xl: 1536px;
-    --breakpoint-3xl: 1920px;
-  
-    /* Easing */
-    --ease-fluid: cubic-bezier(0.4, 0, 0.2, 1);
-    --ease-snappy: cubic-bezier(0.2, 0, 0, 1);
-  
-    /* Other variables */
-    --border-radius: 0.5rem;
-    --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
-  }
-  
-  html {
-    font-family: var(--font-sans);
-    font-size: 16px;
-    scroll-behavior: smooth;
-    background-color: var(--color-bg);
-    color: var(--color-text);
-    line-height: 1.6;
-  }
-  
-  body {
-    margin: 0;
-    min-height: 100vh;
-    background-color: var(--color-bg);
-  }
-  
-  /* Headings */
+  /* Fonts */
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif;
+  --font-display: 'Satoshi', 'sans-serif';
+
+  /* Colors */
+  --color-primary-50: oklch(0.97 0.06 120);
+  --color-primary-100: oklch(0.93 0.08 120);
+  --color-primary-200: oklch(0.85 0.12 120);
+  --color-primary-300: oklch(0.75 0.15 120);
+  --color-primary-400: oklch(0.65 0.18 120);
+  --color-primary-500: oklch(0.55 0.2 120);
+  --color-primary-600: oklch(0.4 0.22 120);
+  --color-primary-700: oklch(0.3 0.25 120);
+  --color-primary-800: oklch(0.2 0.3 120);
+  --color-primary-900: oklch(0.1 0.35 120);
+
+  --color-secondary-50: oklch(0.96 0.05 40);
+  --color-secondary-100: oklch(0.9 0.07 40);
+  --color-secondary-200: oklch(0.8 0.1 40);
+  --color-secondary-300: oklch(0.7 0.12 40);
+  --color-secondary-400: oklch(0.6 0.14 40);
+  --color-secondary-500: oklch(0.5 0.16 40);
+  --color-secondary-600: oklch(0.4 0.18 40);
+  --color-secondary-700: oklch(0.3 0.2 40);
+  --color-secondary-800: oklch(0.2 0.25 40);
+  --color-secondary-900: oklch(0.1 0.3 40);
+
+  /* Background and text */
+  --color-bg: oklch(0.98 0 0);
+  --color-text: oklch(0.1 0 0);
+
+  /* Breakpoints */
+  --breakpoint-sm: 640px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 1024px;
+  --breakpoint-xl: 1280px;
+  --breakpoint-2xl: 1536px;
+  --breakpoint-3xl: 1920px;
+
+  /* Easing */
+  --ease-fluid: cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-snappy: cubic-bezier(0.2, 0, 0, 1);
+
+  /* Other variables */
+  --border-radius: 0.5rem;
+  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+html {
+  font-family: var(--font-sans);
+  font-size: 16px;
+  scroll-behavior: smooth;
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  line-height: 1.6;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background-color: var(--color-bg);
+}
+
+/* Headings */
+h1 {
+  @apply text-primary-900 text-4xl leading-tight font-extrabold tracking-tight;
+  margin-bottom: 1rem;
+  font-family: var(--font-display);
+}
+
+h2 {
+  @apply text-primary-800 text-3xl leading-snug font-bold tracking-wide;
+  margin-bottom: 0.75rem;
+}
+
+h3 {
+  @apply text-primary-700 text-2xl leading-snug font-semibold tracking-normal;
+  margin-bottom: 0.5rem;
+}
+
+/* Paragraphs */
+p {
+  @apply text-secondary-900 mb-6 text-base leading-relaxed;
+}
+
+/* Links */
+a {
+  @apply text-primary-600 hover:text-primary-700 focus:ring-primary-500 focus:ring-2 focus:outline-none;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+/* Buttons */
+button,
+.btn {
+  @apply bg-primary-600 hover:bg-primary-700 focus:ring-primary-500 inline-block rounded px-6 py-2 font-semibold text-white shadow-md transition focus:ring-2 focus:ring-offset-2 focus:outline-none;
+}
+
+/* Utility classes */
+.bg-primary {
+  background-color: var(--color-primary-600);
+  color: white;
+}
+
+.text-primary {
+  color: var(--color-primary-600);
+}
+
+.text-secondary {
+  color: var(--color-secondary-600);
+}
+
+/* Responsive typography */
+@media (min-width: var(--breakpoint-md)) {
   h1 {
-    @apply text-primary-900 text-4xl leading-tight font-extrabold tracking-tight;
-    margin-bottom: 1rem;
-    font-family: var(--font-display);
+    @apply text-5xl;
   }
-  
   h2 {
-    @apply text-primary-800 text-3xl leading-snug font-bold tracking-wide;
-    margin-bottom: 0.75rem;
+    @apply text-4xl;
   }
-  
-  h3 {
-    @apply text-primary-700 text-2xl leading-snug font-semibold tracking-normal;
-    margin-bottom: 0.5rem;
-  }
-  
-  /* Paragraphs */
   p {
-    @apply text-secondary-900 mb-6 text-base leading-relaxed;
+    @apply text-lg;
   }
-  
-  /* Links */
-  a {
-    @apply text-primary-600 hover:text-primary-700 focus:ring-primary-500 focus:ring-2 focus:outline-none;
-    text-decoration: none;
-    transition: color 0.3s ease;
-  }
-  
-  /* Buttons */
-  button,
-  .btn {
-    @apply bg-primary-600 hover:bg-primary-700 focus:ring-primary-500 inline-block rounded px-6 py-2 font-semibold text-white shadow-md transition focus:ring-2 focus:ring-offset-2 focus:outline-none;
-  }
-  
-  /* Utility classes */
-  .bg-primary {
-    background-color: var(--color-primary-600);
-    color: white;
-  }
-  
-  .text-primary {
-    color: var(--color-primary-600);
-  }
-  
-  .text-secondary {
-    color: var(--color-secondary-600);
-  }
-  
-  /* Responsive typography */
-  @media (min-width: var(--breakpoint-md)) {
-    h1 {
-      @apply text-5xl;
-    }
-    h2 {
-      @apply text-4xl;
-    }
-    p {
-      @apply text-lg;
-    }
-  }
-  
-  /* Accessibility focus */
-  :focus-visible {
-    outline: 2px solid var(--color-primary-500);
-    outline-offset: 2px;
-  }
-  
-  html,
-  body {
-    height: 100%;
-  }
-  body {
-    margin: 0;
-    font-family: Roboto, 'Helvetica Neue', sans-serif;
-  }
-  
+}
+
+/* Accessibility focus */
+:focus-visible {
+  outline: 2px solid var(--color-primary-500);
+  outline-offset: 2px;
+}
+
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, 'Helvetica Neue', sans-serif;
+}
