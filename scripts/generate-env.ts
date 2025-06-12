@@ -1,10 +1,5 @@
 import * as fs from 'fs';
-import * as dotenv from 'dotenv';
 
-// Load environment variables from .env file
-dotenv.config();
-
-// List of required env variables
 const requiredEnvVars = [
   'FIREBASE_API_KEY',
   'FIREBASE_AUTH_DOMAIN',
