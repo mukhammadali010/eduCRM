@@ -69,7 +69,9 @@ To automatically format your code and ensure consistent style across the project
 npm run format
 
 ```
+
 ### CI
+
 Triggers on every push or pull request to the main branch.
 Runs:
 
@@ -82,8 +84,11 @@ Runs:
 `npm run build` to build the app
 
 ```
+
 ```
+
 ### CD
+
 Automatically deploys the build to Firebase Hosting after successful CI steps.
 
 Deployment is triggered only on push to the main branch.
@@ -91,31 +96,34 @@ Deployment is triggered only on push to the main branch.
 ```
 
 ```
+
 ### Tailwind CSS
+
 Tailwind CSS has been installed and configured via tailwind.config.js.
 
 Custom colors, fonts, animations, and breakpoints are added for consistent styling.
 
-Tailwind classes can be used in all ./src/**/*.{html,ts,scss} files.
+Tailwind classes can be used in all ./src/\*_/_.{html,ts,scss} files.
 
-```
+````
 
 ## Running unit tests
 
 ```bash
 ng test
-```
+````
+
 ### Unit Testing
 
 To write user-centric unit tests, the following packages are installed:
 
 ```bash
-pnpm i -D @testing-library/angular @testing-library/dom @testing-library/user-event
+npm install -D @testing-library/angular @testing-library/dom @testing-library/user-event
 ```
 
-- `@testing-library/angular` – Angular-specific test helpers  
-- `@testing-library/dom` – Core DOM utilities  
-- `@testing-library/user-event` – Simulates realistic user interactions like typing and clicking  
+- `@testing-library/angular` – Angular-specific test helpers
+- `@testing-library/dom` – Core DOM utilities
+- `@testing-library/user-event` – Simulates realistic user interactions like typing and clicking
 
 To run unit tests:
 
@@ -130,22 +138,21 @@ End-to-end tests are powered by [Playwright](https://playwright.dev), which prov
 To install Playwright and its required browsers:
 
 ```bash
-pnpm i -D @playwright/test
-pnpm playwright install
+npm install -D @playwright/test
+npm run playwright install
 ```
 
 To run Playwright E2E tests:
 
 ```bash
-pnpm playwright test
+npm run playwright test
 ```
 
 To run tests in headed mode (with visible browser window):
 
 ```bash
-pnpm playwright test --headed
+npm run playwright test --headed
 ```
-
 
 Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
 

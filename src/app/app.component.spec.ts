@@ -4,7 +4,12 @@ import { AppComponent } from './app.component';
 describe('AppComponent', () => {
   it('should render title', async () => {
     await render(AppComponent);
-    expect(screen.getByText(/eduCRM/i)).toBeTruthy();
+    expect(screen.getByText(/EduCRM Application/i)).toBeTruthy();
+  });
+
+  it('should render router outlet', async () => {
+    const { fixture } = await render(AppComponent);
+    expect(fixture.debugElement.nativeElement.querySelector('router-outlet')).toBeTruthy();
   });
 
   it('should respond to user click', async () => {
