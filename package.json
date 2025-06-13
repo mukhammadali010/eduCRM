@@ -6,14 +6,24 @@
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test",
+    "test": "ng test --browsers=ChromeHeadless --no-watch --browser-timeout=60000",
     "lint:fix": "ng lint --fix",
     "lint": "ng lint",
     "format": "prettier --write \"src/**/*.{ts,html,scss}\"",
     "format:check": "prettier --check \"src/**/*.{ts,html,scss}\"",
     "generate-env": "node --loader ts-node/esm scripts/generate-env.ts",
     "build:prod": "npm run generate-env && ng build --configuration production",
-    "prepare": "husky"
+    "prepare": "husky",
+    "lint-staged": "lint-staged"
+  },
+  "lint-staged": {
+    "*.{ts,js}": [
+      "eslint --fix",
+      "prettier --write"
+    ],
+    "*.{html,scss,json,md}": [
+      "prettier --write"
+    ]
   },
   "private": true,
   "dependencies": {

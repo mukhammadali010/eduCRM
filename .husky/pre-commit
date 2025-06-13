@@ -1,3 +1,5 @@
-npm run ng lint
-npm run ng test --watch=false
-npm run lint-staged --allow-empty
+#!/bin/sh
+. "$(dirname "$0")/_/husky.sh"
+
+npm run ng lint || exit 1
+./node_modules/.bin/lint-staged --allow-empty || exit 1
