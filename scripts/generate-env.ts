@@ -1,4 +1,5 @@
-import { writeFileSync } from 'fs';
+import { writeFileSync, existsSync, mkdirSync } from 'fs';
+import { dirname } from 'path';
 
 const requiredEnvVars = [
   'FIREBASE_API_KEY',
@@ -15,7 +16,13 @@ for (const key of requiredEnvVars) {
     throw new Error(`❌ Missing required environment variable: ${key}`);
   }
 }
+
 const targetPath = './src/environments/environment.prod.ts';
+const targetDir = dirname(targetPath);
+if (!existsSync(targetDir)) {
+  mkdirSync(targetDir, { recursive: true });
+}
+
 const envFileContent = `export const environment = {
   production: true,
   firebaseConfig: {
