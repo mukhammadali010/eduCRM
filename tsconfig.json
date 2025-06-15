@@ -17,7 +17,8 @@
     "importHelpers": true,
     "target": "ES2022",
     "module": "ES2022",
-    "types": ["node"]
+    "lib": ["ES2022", "DOM"],
+    "types": ["node", "jasmine"]
   },
   "ts-node": {
     "esm": true
