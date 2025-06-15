@@ -15,7 +15,10 @@
     "generate-env": "node --loader ts-node/esm scripts/generate-env.ts",
     "build:prod": "npm run generate-env && ng build --configuration production",
     "prepare": "husky",
-    "lint-staged": "lint-staged"
+    "lint-staged": "lint-staged",
+    "playwright": "playwright",
+    "playwright:test": "playwright test",
+    "playwright:headed": "playwright test --headed"
   },
   "lint-staged": {
     "*.{ts,js}": [

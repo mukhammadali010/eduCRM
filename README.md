@@ -36,22 +36,6 @@ ng build
 
 This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
 
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
 ## Linting
 
 To analyze and check our code for potential issues and enforce coding style rules, run:
@@ -75,8 +59,6 @@ npm run format
 Triggers on every push or pull request to the main branch.
 Runs:
 
-`npm install` to install dependencies
-
 `npm run lint` for lint checks
 
 `npm run test` for unit tests
@@ -99,7 +81,7 @@ Deployment is triggered only on push to the main branch.
 
 ### Tailwind CSS
 
-Tailwind CSS has been installed and configured via tailwind.config.js.
+Tailwind CSS has been installed
 
 Custom colors, fonts, animations, and breakpoints are added for consistent styling.
 
@@ -128,19 +110,12 @@ npm install -D @testing-library/angular @testing-library/dom @testing-library/us
 To run unit tests:
 
 ```bash
-ng test
+npm run test
 ```
 
 ### End-to-End Testing (Playwright)
 
 End-to-end tests are powered by [Playwright](https://playwright.dev), which provides fast, reliable, and cross-browser testing.
-
-To install Playwright and its required browsers:
-
-```bash
-npm install -D @playwright/test
-npm run playwright install
-```
 
 To run Playwright E2E tests:
 
