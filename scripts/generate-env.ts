@@ -1,4 +1,5 @@
-import * as fs from 'fs';
+import { writeFileSync, existsSync, mkdirSync } from 'fs';
+import { dirname } from 'path';
 
 const requiredEnvVars = [
   'FIREBASE_API_KEY',
@@ -15,9 +16,9 @@ for (const key of requiredEnvVars) {
     throw new Error(`❌ Missing required environment variable: ${key}`);
   }
 }
-const targetPath = './src/environments/environment.prod.ts';
-const envFileContent = `export const environment = {
-  production: true,
+
+const generateEnvContent = (isProd: boolean) => `export const environment = {
+  production: ${isProd},
   firebaseConfig: {
     apiKey: '${process.env['FIREBASE_API_KEY']}',
     authDomain: '${process.env['FIREBASE_AUTH_DOMAIN']}',
@@ -29,5 +30,17 @@ const envFileContent = `export const environment = {
   }
 };`;
 
-fs.writeFileSync(targetPath, envFileContent);
-console.log('✅ environment.prod.ts file generated successfully.');
+const files = [
+  { path: './src/environments/environment.ts', isProd: false },
+  { path: './src/environments/environment.prod.ts', isProd: true },
+];
+
+for (const file of files) {
+  const dir = dirname(file.path);
+  if (!existsSync(dir)) {
+    mkdirSync(dir, { recursive: true });
+  }
+
+  writeFileSync(file.path, generateEnvContent(file.isProd));
+  console.log(`✅ ${file.path} file generated successfully.`);
+}
