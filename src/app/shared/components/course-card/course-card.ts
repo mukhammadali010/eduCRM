@@ -6,4 +6,4 @@ import { Component } from '@angular/core';
   templateUrl: './course-card.html',
   styleUrl: './course-card.scss',
 })
-export class CourseCard {}
+export class CourseCardComponent {}

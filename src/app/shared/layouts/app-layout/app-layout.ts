@@ -6,4 +6,4 @@ import { Component } from '@angular/core';
   templateUrl: './app-layout.html',
   styleUrl: './app-layout.scss',
 })
-export class AppLayout {}
+export class AppLayoutComponent {}

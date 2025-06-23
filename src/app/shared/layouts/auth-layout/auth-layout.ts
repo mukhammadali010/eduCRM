@@ -6,4 +6,4 @@ import { Component } from '@angular/core';
   templateUrl: './auth-layout.html',
   styleUrl: './auth-layout.scss',
 })
-export class AuthLayout {}
+export class AuthLayoutComponent {}
