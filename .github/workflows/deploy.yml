@@ -23,7 +23,6 @@ jobs:
 
       - name: Build Angular project
         run: npm run build -- --configuration=production
-
       - name: Debug projectId
         run: echo "PROJECT_ID=${{ secrets.FIREBASE_PROJECT_ID }}"
 
