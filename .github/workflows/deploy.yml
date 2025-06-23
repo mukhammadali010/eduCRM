@@ -3,10 +3,13 @@ name: Deploy to Firebase Hosting
 on:
   push:
     branches:
+      - dev
+      - acc
       - main
 
 jobs:
-  deploy:
+  deploy-dev:
+    if: github.ref == 'refs/heads/dev'
     runs-on: ubuntu-latest
 
     steps:
@@ -21,16 +24,69 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Build Angular project
-        run: npm run build:prod
-          
-      - name: Debug projectId
-        run: echo "PROJECT_ID=${{ secrets.FIREBASE_PROJECT_ID }}"
+      - name: Build Angular project for DEV
+        run: npm run build:dev
 
-      - name: Deploy to Firebase Hosting
+      - name: Deploy to Firebase (DEV)
         uses: FirebaseExtended/action-hosting-deploy@v0
         with:
-          firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_EDUCRM_9B140 }}'
-          repoToken: "${{ secrets.GITHUB_TOKEN }}"
-          projectId: ${{ secrets.FIREBASE_PROJECT_ID }}
-          channelId: live
+          firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_DEV }}'
+          repoToken: '${{ secrets.GITHUB_TOKEN }}'
+          projectId: 'educrm-dev'
+          channelId: 'dev'
+
+
+  deploy-acc:
+    if: github.ref == 'refs/heads/acc'
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 20
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build Angular project for ACC
+        run: npm run build:acc
+
+      - name: Deploy to Firebase (ACC)
+        uses: FirebaseExtended/action-hosting-deploy@v0
+        with:
+          firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_ACC }}'
+          repoToken: '${{ secrets.GITHUB_TOKEN }}'
+          projectId: 'educrm-acc'
+          channelId: 'acc'
+
+
+  deploy-prod:
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 20
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build Angular project for PROD
+        run: npm run build:prod
+
+      - name: Deploy to Firebase (PROD)
+        uses: FirebaseExtended/action-hosting-deploy@v0
+        with:
+          firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_PROD }}'
+          repoToken: '${{ secrets.GITHUB_TOKEN }}'
+          projectId: 'educrm-prod'
+          channelId: 'live'

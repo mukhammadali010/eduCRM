@@ -1,5 +1,8 @@
 {
   "projects": {
-    "default": "default"
+    "default": "default",
+    "dev": "educrm-dev",
+    "acc": "educrm-acc",
+    "prod": "educrm-prod"
   }
 }
