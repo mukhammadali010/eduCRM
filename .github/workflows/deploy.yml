@@ -97,5 +97,8 @@ jobs:
           else
             firebase deploy --only hosting:prod --token "${{ secrets.FIREBASE_TOKEN_PROD }}"
           fi
+        env:
+          GOOGLE_APPLICATION_CREDENTIALS: ${{ github.workspace }}/firebase-key.json
+          FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
       - name: Write service account to file
         run: echo '${{ secrets.FIREBASE_SERVICE_ACCOUNT_DEV}}' > firebase-key.json
