@@ -8,8 +8,8 @@ on:
       - main
 
 jobs:
-  deploy-dev:
-    if: github.ref == 'refs/heads/dev'
+
+  deploy:
     runs-on: ubuntu-latest
 
     steps:
@@ -24,69 +24,68 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Build Angular project for DEV
-        run: npm run build:dev
+      - name: Create environment.ts
+        run: |
+          mkdir -p src/environments
+          if [[ "${GITHUB_REF##*/}" == "dev" ]]; then
+            echo "export const environment = {
+              production: false,
+              apiUrl: 'https://educrm-dev.web.app/',
+              firebaseConfig: {
+                apiKey: '${{ secrets.FIREBASE_API_KEY }}',
+                authDomain: '${{ secrets.FIREBASE_AUTH_DOMAIN }}',
+                projectId: 'educrm-dev',
+                storageBucket: '${{ secrets.FIREBASE_STORAGE_BUCKET }}',
+                messagingSenderId: '${{ secrets.FIREBASE_MESSAGING_SENDER_ID }}',
+                appId: '${{ secrets.FIREBASE_APP_ID }}',
+                measurementId: '${{ secrets.FIREBASE_MEASUREMENT_ID }}'
+              }
+            };" > src/environments/environment.ts
+          elif [[ "${GITHUB_REF##*/}" == "acc" ]]; then
+            echo "export const environment = {
+              production: false,
+              apiUrl: 'https://educrm-dev.web.app/',
+              firebaseConfig: {
+                apiKey: '${{ secrets.FIREBASE_API_KEY }}',
+                authDomain: '${{ secrets.FIREBASE_AUTH_DOMAIN }}',
+                projectId: 'educrm-acc',
+                storageBucket: '${{ secrets.FIREBASE_STORAGE_BUCKET }}',
+                messagingSenderId: '${{ secrets.FIREBASE_MESSAGING_SENDER_ID }}',
+                appId: '${{ secrets.FIREBASE_APP_ID }}',
+                measurementId: '${{ secrets.FIREBASE_MEASUREMENT_ID }}'
+              }
+            };" > src/environments/environment.ts
+          else
+            echo "export const environment = {
+              production: true,
+              apiUrl: 'https://educrm-9b140.web.app/',
+              firebaseConfig: {
+                apiKey: '${{ secrets.FIREBASE_API_KEY }}',
+                authDomain: '${{ secrets.FIREBASE_AUTH_DOMAIN }}',
+                projectId: 'educrm-prod',
+                storageBucket: '${{ secrets.FIREBASE_STORAGE_BUCKET }}',
+                messagingSenderId: '${{ secrets.FIREBASE_MESSAGING_SENDER_ID }}',
+                appId: '${{ secrets.FIREBASE_APP_ID }}',
+                measurementId: '${{ secrets.FIREBASE_MEASUREMENT_ID }}'
+              }
+            };" > src/environments/environment.ts
+          fi
 
-      - name: Deploy to Firebase (DEV)
+      - name: Build Angular app
+        run: |
+          BRANCH=${GITHUB_REF##*/}
+          if [[ "$BRANCH" == "dev" ]]; then
+            npm run build:dev
+          elif [[ "$BRANCH" == "acc" ]]; then
+            npm run build:acc
+          else
+            npm run build:prod
+          fi
+
+      - name: Deploy to Firebase
         uses: FirebaseExtended/action-hosting-deploy@v0
         with:
-          firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_DEV }}'
+          firebaseServiceAccount: ${{ github.ref == 'refs/heads/dev' && secrets.FIREBASE_SERVICE_ACCOUNT_DEV || github.ref == 'refs/heads/acc' && secrets.FIREBASE_SERVICE_ACCOUNT_ACC || secrets.FIREBASE_SERVICE_ACCOUNT_PROD }}
           repoToken: '${{ secrets.GITHUB_TOKEN }}'
-          projectId: 'educrm-dev'
-          channelId: 'dev'
-
-
-  deploy-acc:
-    if: github.ref == 'refs/heads/acc'
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-
-      - name: Set up Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: 20
-
-      - name: Install dependencies
-        run: npm ci
-
-      - name: Build Angular project for ACC
-        run: npm run build:acc
-
-      - name: Deploy to Firebase (ACC)
-        uses: FirebaseExtended/action-hosting-deploy@v0
-        with:
-          firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_ACC }}'
-          repoToken: '${{ secrets.GITHUB_TOKEN }}'
-          projectId: 'educrm-acc'
-          channelId: 'acc'
-
-
-  deploy-prod:
-    if: github.ref == 'refs/heads/main'
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-
-      - name: Set up Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: 20
-
-      - name: Install dependencies
-        run: npm ci
-
-      - name: Build Angular project for PROD
-        run: npm run build:prod
-
-      - name: Deploy to Firebase (PROD)
-        uses: FirebaseExtended/action-hosting-deploy@v0
-        with:
-          firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_PROD }}'
-          repoToken: '${{ secrets.GITHUB_TOKEN }}'
-          projectId: 'educrm-prod'
-          channelId: 'live'
+          projectId: ${{ github.ref == 'refs/heads/dev' && 'educrm-dev' || github.ref == 'refs/heads/acc' && 'educrm-acc' || 'educrm-prod' }}
+          channelId: ${{ github.ref == 'refs/heads/dev' && 'dev' || github.ref == 'refs/heads/acc' && 'acc' || 'live' }}
