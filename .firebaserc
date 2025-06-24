@@ -3,6 +3,6 @@
     "default": "default",
     "dev": "educrm-dev",
     "acc": "educrm-acc",
-    "prod": "educrm-prod"
+    "prod": "educrm-9b140"
   }
 }
