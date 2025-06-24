@@ -8,6 +8,7 @@ on:
       - main
 
 jobs:
+
   deploy-dev:
     if: github.ref == 'refs/heads/dev'
     runs-on: ubuntu-latest
@@ -24,7 +25,24 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Build Angular project for DEV
+      - name: Create environment.ts for DEV
+        run: |
+          mkdir -p src/environments
+          echo "export const environment = {
+            production: false,
+            apiUrl: 'https://dev.api.educrm.uz',
+            firebaseConfig: {
+              apiKey: '${{ secrets.FIREBASE_API_KEY }}',
+              authDomain: '${{ secrets.FIREBASE_AUTH_DOMAIN }}',
+              projectId: '${{ secrets.FIREBASE_PROJECT_ID }}',
+              storageBucket: '${{ secrets.FIREBASE_STORAGE_BUCKET }}',
+              messagingSenderId: '${{ secrets.FIREBASE_MESSAGING_SENDER_ID }}',
+              appId: '${{ secrets.FIREBASE_APP_ID }}',
+              measurementId: '${{ secrets.FIREBASE_MEASUREMENT_ID }}'
+            }
+          };" > src/environments/environment.ts
+
+      - name: Build Angular project (DEV)
         run: npm run build:dev
 
       - name: Deploy to Firebase (DEV)
@@ -52,7 +70,24 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Build Angular project for ACC
+      - name: Create environment.ts for ACC
+        run: |
+          mkdir -p src/environments
+          echo "export const environment = {
+            production: false,
+            apiUrl: 'https://acc.api.educrm.uz',
+            firebaseConfig: {
+              apiKey: '${{ secrets.FIREBASE_API_KEY }}',
+              authDomain: '${{ secrets.FIREBASE_AUTH_DOMAIN }}',
+              projectId: '${{ secrets.FIREBASE_PROJECT_ID }}',
+              storageBucket: '${{ secrets.FIREBASE_STORAGE_BUCKET }}',
+              messagingSenderId: '${{ secrets.FIREBASE_MESSAGING_SENDER_ID }}',
+              appId: '${{ secrets.FIREBASE_APP_ID }}',
+              measurementId: '${{ secrets.FIREBASE_MEASUREMENT_ID }}'
+            }
+          };" > src/environments/environment.ts
+
+      - name: Build Angular project (ACC)
         run: npm run build:acc
 
       - name: Deploy to Firebase (ACC)
@@ -80,7 +115,24 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Build Angular project for PROD
+      - name: Create environment.ts for PROD
+        run: |
+          mkdir -p src/environments
+          echo "export const environment = {
+            production: true,
+            apiUrl: 'https://api.educrm.uz',
+            firebaseConfig: {
+              apiKey: '${{ secrets.FIREBASE_API_KEY }}',
+              authDomain: '${{ secrets.FIREBASE_AUTH_DOMAIN }}',
+              projectId: '${{ secrets.FIREBASE_PROJECT_ID }}',
+              storageBucket: '${{ secrets.FIREBASE_STORAGE_BUCKET }}',
+              messagingSenderId: '${{ secrets.FIREBASE_MESSAGING_SENDER_ID }}',
+              appId: '${{ secrets.FIREBASE_APP_ID }}',
+              measurementId: '${{ secrets.FIREBASE_MEASUREMENT_ID }}'
+            }
+          };" > src/environments/environment.ts
+
+      - name: Build Angular project (PROD)
         run: npm run build:prod
 
       - name: Deploy to Firebase (PROD)
