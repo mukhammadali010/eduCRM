@@ -86,7 +86,15 @@ jobs:
           fi
 
       - name: Write service account JSON to file
-        run: echo '${{ secrets.FIREBASE_SERVICE_ACCOUNT_DEV }}' > ${{ github.workspace }}/firebase-key.json
+        run: |
+          BRANCH="${GITHUB_REF##*/}"
+          if [[ "$BRANCH" == "dev" ]]; then
+            echo '${{ secrets.FIREBASE_SERVICE_ACCOUNT_DEV }}' > ${{ github.workspace }}/firebase-key.json
+          elif [[ "$BRANCH" == "acc" ]]; then
+            echo '${{ secrets.FIREBASE_SERVICE_ACCOUNT_ACC }}' > ${{ github.workspace }}/firebase-key.json
+          else
+            echo '${{ secrets.FIREBASE_SERVICE_ACCOUNT_PROD }}' > ${{ github.workspace }}/firebase-key.json
+          fi
 
       - name: Deploy to Firebase Hosting
         run: |
