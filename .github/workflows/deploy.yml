@@ -97,4 +97,5 @@ jobs:
           else
             firebase deploy --only hosting:prod --token "${{ secrets.FIREBASE_TOKEN_PROD }}"
           fi
-          
+      - name: Write service account to file
+        run: echo '${{ secrets.FIREBASE_SERVICE_ACCOUNT_DEV}}' > firebase-key.json
