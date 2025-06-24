@@ -8,18 +8,25 @@
   "targets": {
     "educrm-dev": {
       "hosting": {
-        "dev": ["educrm-dev"]
+        "dev": [
+          "educrm-dev"
+        ]
       }
     },
     "educrm-acc": {
       "hosting": {
-        "acc": ["educrm-acc"]
+        "acc": [
+          "educrm-acc"
+        ]
       }
     },
-    "educrm-prod": {
+    "educrm-9b140": {
       "hosting": {
-        "prod": ["educrm-9b140"]
+        "prod": [
+          "educrm-9b140"
+        ]
       }
     }
-  }
+  },
+  "etags": {}
 }
