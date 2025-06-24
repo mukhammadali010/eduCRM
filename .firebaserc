@@ -4,5 +4,21 @@
     "dev": "educrm-dev",
     "acc": "educrm-acc",
     "prod": "educrm-9b140"
-  }
+  },
+  "targets": {
+    "educrm-9b140": {
+      "hosting": {
+        "dev": [
+          "educrm-dev"
+        ],
+        "acc": [
+          "educrm-acc"
+        ],
+        "prod": [
+          "educrm-prod"
+        ]
+      }
+    }
+  },
+  "etags": {}
 }
