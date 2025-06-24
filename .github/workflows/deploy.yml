@@ -71,7 +71,7 @@ jobs:
                 appId: '${{ secrets.FIREBASE_APP_ID_PROD }}',
                 measurementId: '${{ secrets.FIREBASE_MEASUREMENT_ID_PROD }}'
               }
-            };" > src/environments/environment.ts
+            };" > src/environments/environment.prod.ts
           fi
 
       - name: Build Angular App
