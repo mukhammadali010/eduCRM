@@ -95,8 +95,7 @@ jobs:
             firebase use dev
             firebase deploy --only hosting:dev
           elif [[ "$BRANCH" == "acc" ]]; then
-            firebase use acc
-            firebase deploy --only hosting:acc
+            firebase deploy --only hosting:acc --project=educrm-acc
           else
             firebase use prod
             firebase deploy --only hosting:prod
