@@ -1,5 +1,25 @@
 {
   "projects": {
-    "default": "default"
+    "default": "educrm-9b140",
+    "dev": "educrm-dev",
+    "acc": "educrm-acc",
+    "prod": "educrm-9b140"
+  },
+  "targets": {
+    "educrm-dev": {
+      "hosting": {
+        "dev": ["educrm-dev"]
+      }
+    },
+    "educrm-acc": {
+      "hosting": {
+        "acc": ["educrm-acc"]
+      }
+    },
+    "educrm-prod": {
+      "hosting": {
+        "prod": ["educrm-9b140"]
+      }
+    }
   }
 }
