@@ -44,7 +44,7 @@ jobs:
           elif [[ "${GITHUB_REF##*/}" == "acc" ]]; then
             echo "export const environment = {
               production: false,
-              apiUrl: 'https://educrm-dev.web.app/',
+              apiUrl: 'https://educrm-acc.web.app/',
               firebaseConfig: {
                 apiKey: '${{ secrets.FIREBASE_API_KEY }}',
                 authDomain: '${{ secrets.FIREBASE_AUTH_DOMAIN }}',
