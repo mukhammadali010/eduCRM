@@ -129,6 +129,14 @@ To run tests in headed mode (with visible browser window):
 npm run playwright test --headed
 ```
 
+### CI/CD (Firebase Deployment)
+
+- `dev` branch → deploys to `educrm-dev`
+- `acc` branch → deploys to `educrm-acc`
+- `main` branch → deploys to `educrm-prod`
+
+Configured via `.firebaserc` and GitHub Actions workflow.
+
 Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
 
 ## Additional Resources
