@@ -3,6 +3,8 @@ name: Deploy to Firebase Hosting
 on:
   push:
     branches:
+      - dev
+      - acc
       - main
 
 jobs:
@@ -16,37 +18,86 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: 20
+          node-version: 22.12.0
 
       - name: Install dependencies
         run: npm ci
 
-      - name: Create environment file
-        run: npm run generate-env
-        env:
-          FIREBASE_API_KEY: ${{ secrets.FIREBASE_API_KEY }}
-          FIREBASE_AUTH_DOMAIN: ${{ secrets.FIREBASE_AUTH_DOMAIN }}
-          FIREBASE_PROJECT_ID: ${{ secrets.FIREBASE_PROJECT_ID }}
-          FIREBASE_STORAGE_BUCKET: ${{ secrets.FIREBASE_STORAGE_BUCKET }}
-          FIREBASE_MESSAGING_SENDER_ID: ${{ secrets.FIREBASE_MESSAGING_SENDER_ID }}
-          FIREBASE_APP_ID: ${{ secrets.FIREBASE_APP_ID }}
-          FIREBASE_MEASUREMENT_ID: ${{ secrets.FIREBASE_MEASUREMENT_ID }}
+      - name: Install Firebase CLI
+        run: npm install -g firebase-tools
 
-      - name: Build Angular project
-        run: npm run build -- --configuration=production
+      - name: Update environment keys
+        run: |
+          mkdir -p src/environments
+          BRANCH="${GITHUB_REF##*/}"
+          if [[ "$BRANCH" == "dev" ]]; then
+            echo "export const environment = {
+              production: false,
+              apiUrl: 'https://educrm-dev.web.app/',
+              firebaseConfig: {
+                apiKey: '${{ secrets.FIREBASE_API_KEY_DEV }}',
+                authDomain: '${{ secrets.FIREBASE_AUTH_DOMAIN_DEV }}',
+                projectId: 'educrm-dev',
+                storageBucket: '${{ secrets.FIREBASE_STORAGE_BUCKET_DEV }}',
+                messagingSenderId: '${{ secrets.FIREBASE_MESSAGING_SENDER_ID_DEV }}',
+                appId: '${{ secrets.FIREBASE_APP_ID_DEV }}',
+                measurementId: '${{ secrets.FIREBASE_MEASUREMENT_ID_DEV }}'
+              }
+            };" > src/environments/environment.dev.ts
 
-      - name: Authenticate to Google Cloud
-        uses: google-github-actions/auth@v2
-        with:
-          credentials_json: ${{ secrets.GCLOUD_CREDENTIALS }}
-          
-      - name: Debug projectId
-        run: echo "PROJECT_ID=${{ secrets.FIREBASE_PROJECT_ID }}"
+            
+          elif [[ "$BRANCH" == "acc" ]]; then
+            echo "export const environment = {
+              production: false,
+              apiUrl: 'https://educrm-acc.web.app/',
+              firebaseConfig: {
+                apiKey: '${{ secrets.FIREBASE_API_KEY_ACC }}',
+                authDomain: '${{ secrets.FIREBASE_AUTH_DOMAIN_ACC }}',
+                projectId: 'educrm-acc',
+                storageBucket: '${{ secrets.FIREBASE_STORAGE_BUCKET_ACC }}',
+                messagingSenderId: '${{ secrets.FIREBASE_MESSAGING_SENDER_ID_ACC }}',
+                appId: '${{ secrets.FIREBASE_APP_ID_ACC }}',
+                measurementId: '${{ secrets.FIREBASE_MEASUREMENT_ID_ACC }}'
+              }
+            };" > src/environments/environment.acc.ts
+
+          else
+            echo "export const environment = {
+              production: true,
+              apiUrl: 'https://educrm-9b140.web.app/',
+              firebaseConfig: {
+                apiKey: '${{ secrets.FIREBASE_API_KEY_PROD }}',
+                authDomain: '${{ secrets.FIREBASE_AUTH_DOMAIN_PROD }}',
+                projectId: 'educrm-prod',
+                storageBucket: '${{ secrets.FIREBASE_STORAGE_BUCKET_PROD }}',
+                messagingSenderId: '${{ secrets.FIREBASE_MESSAGING_SENDER_ID_PROD }}',
+                appId: '${{ secrets.FIREBASE_APP_ID_PROD }}',
+                measurementId: '${{ secrets.FIREBASE_MEASUREMENT_ID_PROD }}'
+              }
+            };" > src/environments/environment.prod.ts
+
+          fi
+
+      - name: Build Angular App
+        run: |
+          BRANCH="${GITHUB_REF##*/}"
+          if [[ "$BRANCH" == "dev" ]]; then
+            npm run build:dev
+          elif [[ "$BRANCH" == "acc" ]]; then
+            npm run build:acc
+          else
+            npm run build:prod
+          fi
 
       - name: Deploy to Firebase Hosting
-        uses: FirebaseExtended/action-hosting-deploy@v0
-        with:
-          firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_EDUCRM_9B140 }}'
-          repoToken: "${{ secrets.GITHUB_TOKEN }}"
-          projectId: ${{ secrets.FIREBASE_PROJECT_ID }}
-          channelId: live
+        run: |
+          BRANCH="${GITHUB_REF##*/}"
+          if [[ "$BRANCH" == "dev" ]]; then
+            firebase use dev
+            firebase deploy --only hosting:dev
+          elif [[ "$BRANCH" == "acc" ]]; then
+            firebase deploy --only hosting:acc --project=educrm-acc
+          else
+            firebase use prod
+            firebase deploy --only hosting:prod
+          fi
