@@ -26,7 +26,7 @@ jobs:
       - name: Install Firebase CLI
         run: npm install -g firebase-tools
 
-      - name: Create environment.ts
+      - name: Update environment keys
         run: |
           mkdir -p src/environments
           BRANCH="${GITHUB_REF##*/}"
@@ -89,17 +89,6 @@ jobs:
             npm run build:prod
           fi
 
-      - name: Write service account JSON to file
-        run: |
-          BRANCH="${GITHUB_REF##*/}"
-          if [[ "$BRANCH" == "dev" ]]; then
-            echo '${{ secrets.FIREBASE_SERVICE_ACCOUNT_DEV }}' > ${{ github.workspace }}/firebase-key.json
-          elif [[ "$BRANCH" == "acc" ]]; then
-            echo '${{ secrets.FIREBASE_SERVICE_ACCOUNT_ACC }}' > ${{ github.workspace }}/firebase-key.json
-          else
-            echo '${{ secrets.FIREBASE_SERVICE_ACCOUNT_PROD }}' > ${{ github.workspace }}/firebase-key.json
-          fi
-
       - name: Deploy to Firebase Hosting
         run: |
           BRANCH="${GITHUB_REF##*/}"
@@ -112,5 +101,3 @@ jobs:
             firebase use prod
             firebase deploy --only hosting:prod
           fi
-        env:
-          GOOGLE_APPLICATION_CREDENTIALS: ${{ github.workspace }}/firebase-key.json
