@@ -18,7 +18,7 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: 20
+          node-version: 22.12.0
 
       - name: Install dependencies
         run: npm ci
@@ -44,6 +44,9 @@ jobs:
                 measurementId: '${{ secrets.FIREBASE_MEASUREMENT_ID_DEV }}'
               }
             };" > src/environments/environment.ts
+
+            cp src/environments/environment.prod.ts src/environments/environment.ts
+            
           elif [[ "$BRANCH" == "acc" ]]; then
             echo "export const environment = {
               production: false,
@@ -58,6 +61,9 @@ jobs:
                 measurementId: '${{ secrets.FIREBASE_MEASUREMENT_ID_ACC }}'
               }
             };" > src/environments/environment.ts
+
+            cp src/environments/environment.prod.ts src/environments/environment.ts
+
           else
             echo "export const environment = {
               production: true,
@@ -71,7 +77,9 @@ jobs:
                 appId: '${{ secrets.FIREBASE_APP_ID_PROD }}',
                 measurementId: '${{ secrets.FIREBASE_MEASUREMENT_ID_PROD }}'
               }
-            };" > src/environments/environment.ts
+            };" > src/environments/environment.prod.ts
+
+            cp src/environments/environment.prod.ts src/environments/environment.ts
           fi
 
       - name: Build Angular App
@@ -86,7 +94,15 @@ jobs:
           fi
 
       - name: Write service account JSON to file
-        run: echo '${{ secrets.FIREBASE_SERVICE_ACCOUNT_DEV }}' > ${{ github.workspace }}/firebase-key.json
+        run: |
+          BRANCH="${GITHUB_REF##*/}"
+          if [[ "$BRANCH" == "dev" ]]; then
+            echo '${{ secrets.FIREBASE_SERVICE_ACCOUNT_DEV }}' > ${{ github.workspace }}/firebase-key.json
+          elif [[ "$BRANCH" == "acc" ]]; then
+            echo '${{ secrets.FIREBASE_SERVICE_ACCOUNT_ACC }}' > ${{ github.workspace }}/firebase-key.json
+          else
+            echo '${{ secrets.FIREBASE_SERVICE_ACCOUNT_PROD }}' > ${{ github.workspace }}/firebase-key.json
+          fi
 
       - name: Deploy to Firebase Hosting
         run: |
@@ -95,8 +111,7 @@ jobs:
             firebase use dev
             firebase deploy --only hosting:dev
           elif [[ "$BRANCH" == "acc" ]]; then
-            firebase use acc
-            firebase deploy --only hosting:acc
+            firebase deploy --only hosting:acc --project=educrm-acc
           else
             firebase use prod
             firebase deploy --only hosting:prod
