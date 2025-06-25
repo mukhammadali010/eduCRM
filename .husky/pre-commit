@@ -1,7 +1,4 @@
 #!/bin/sh
-export NVM_DIR="$HOME/.nvm"
-. "$NVM_DIR/nvm.sh"
-
 . "$(dirname "$0")/_/husky.sh"
 
 npm run ng lint || exit 1
