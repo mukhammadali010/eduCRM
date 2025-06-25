@@ -41,8 +41,6 @@ testem.log
 .DS_Store
 Thumbs.db
 *.key.pem
-environment.prod.ts
-environment.ts
 .env
 
 # cache file
