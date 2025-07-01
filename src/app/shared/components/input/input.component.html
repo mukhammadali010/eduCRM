@@ -1,0 +1,74 @@
+<div
+  class="form-group flex items-center gap-2 border border-gray-300 rounded-md px-4 py-2 shadow-sm bg-white focus-within:ring-2 focus-within:ring-primary transition-all duration-300 w-full max-w-md"
+>
+  @if (type() === 'search') {
+    <mat-icon class="text-gray-500">search</mat-icon>
+  }
+  @switch (type()) {
+    @case ('text') {
+      <input
+        (input)="updateValue($event)"
+        [value]="value()"
+        [placeholder]="placeholder()"
+        [disabled]="isDisabled()"
+        type="text"
+        class="flex-1 outline-none bg-transparent text-sm text-gray-800 placeholder:text-gray-400"
+      />
+    }
+
+    @case ('number') {
+      <input
+        (input)="updateValue($event)"
+        [value]="value()"
+        [placeholder]="placeholder()"
+        [disabled]="isDisabled()"
+        type="number"
+        class="flex-1 outline-none bg-transparent text-sm text-gray-800 placeholder:text-gray-400"
+      />
+    }
+    @case ('search') {
+      <input
+        (input)="updateValue($event)"
+        [value]="value()"
+        [placeholder]="placeholder()"
+        [disabled]="isDisabled()"
+        type="text"
+        class="flex-1 outline-none bg-transparent text-sm text-gray-800 placeholder:text-gray-400"
+      />
+    }
+    @case ('textarea') {
+      <textarea
+        (input)="updateValue($event)"
+        [placeholder]="placeholder()"
+        [disabled]="isDisabled()"
+        class="flex-1 outline-none bg-transparent text-sm text-gray-800 placeholder:text-gray-400"
+        >{{ value() }}</textarea
+      >
+    }
+
+    @case ('select') {
+      <select
+        (change)="updateValue($event)"
+        [disabled]="isDisabled()"
+        class="flex-1 outline-none bg-transparent text-sm text-gray-800 placeholder:text-gray-400"
+      >
+        @for (option of options(); track option.value) {
+          <option [value]="option.value" [selected]="option.value === value()">
+            {{ option.label }}
+          </option>
+        }
+      </select>
+    }
+
+    @default {
+      <input
+        (input)="updateValue($event)"
+        [value]="value()"
+        [placeholder]="placeholder()"
+        [disabled]="isDisabled()"
+        [type]="type()"
+        class="flex-1 outline-none bg-transparent text-sm text-gray-800 placeholder:text-gray-400"
+      />
+    }
+  }
+</div>
