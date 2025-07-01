@@ -1,12 +1,16 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700&family=Outfit:wght@400;500;600;700&display=swap');
 @import 'tailwindcss';
 
 @theme {
-  --font-base: 'Inter', sans-serif;
-  --font-heading: 'Satoshi', sans-serif;
+  --font-base: 'Nunito';
+  --font-heading: 'Outfit';
 
-  --color-primary: #2563eb;
+  --color-primary: #3f51b5;
+  --color-secondary: #f5f5f5;
   --color-primary-hover: #1e40af;
-  --color-accent: #22c55e;
+  --color-accent: #009688;
+  --color-text: #333333;
+  --color-seccess: #10b981;
   --color-background: #f9fafb;
   --color-surface: #ffffff;
   --color-muted: #6b7280;
