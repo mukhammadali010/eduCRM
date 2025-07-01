@@ -1,0 +1,11 @@
+<button (click)="buttonClick.emit()" [disabled]="disabled()" [type]="type()" [ngClass]="color()" class="flex items-center cursor-pointer">
+  @if (icon() && iconPosition() === 'left') {
+    <mat-icon>{{ icon() }}</mat-icon>
+    {{ label() }}
+  } @else if (icon() && iconPosition() === 'right') {
+    {{ label() }}
+    <mat-icon>{{ icon() }}</mat-icon>
+  } @else {
+    {{ label() }}
+  }
+</button>
