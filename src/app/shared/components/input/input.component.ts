@@ -41,10 +41,15 @@ export class InputComponent implements ControlValueAccessor {
     this.isDisabled.set(isDisabled);
   }
 
-  updateValue(event: Event): void {
-    const target = event.target as HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement;
-    const inputValue = target.value;
-    const value: string | number = this.type() === 'number' ? Number(inputValue) : inputValue;
+  // updateValue(event: Event): void {
+  //   const target = event.target as HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement;
+  //   const inputValue = target.value;
+  //   const value: string | number = this.type() === 'number' ? Number(inputValue) : inputValue;
+  //   this.value.set(value);
+  //   this.onChange(value);
+  //   this.onTouched();
+  // }
+  updateValue(value: string | number): void {
     this.value.set(value);
     this.onChange(value);
     this.onTouched();

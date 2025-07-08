@@ -5,6 +5,8 @@
   } @else if (icon() && iconPosition() === 'right') {
     {{ label() }}
     <mat-icon>{{ icon() }}</mat-icon>
+  } @else if (!label() && !icon()) {
+    <ng-content></ng-content>
   } @else {
     {{ label() }}
   }

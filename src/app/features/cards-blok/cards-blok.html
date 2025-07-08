@@ -1,0 +1,39 @@
+<div class="flex items-end flex-col relative pb-7">
+  <div class="flex items-center mt-3 text-text absolute -top-2 z-10 max-[576px]:hidden">
+    <span>Sort by:</span>
+    <app-input [(ngModel)]="selectedSort" [type]="'select'" [options]="options()" />
+  </div>
+  <div class="w-full flex items-start justify-between">
+    <mat-tab-group [mat-stretch-tabs]="false" [style]="'w-full'" animationDuration="0ms">
+      <mat-tab label="All gadgets" class="border">
+        <div class="flex flex-wrap justify-between">
+          @for (product of paginatedProducts(); track product.name) {
+          <app-card
+            [name]="product.name"
+            [price]="product.price"
+            [discountPrice]="product.discountPrice"
+            [discountLabel]="product.discountLabel"
+            [image]="product.image"
+          />
+          }
+        </div>
+
+        <div class="flex justify-end items-center mt-6 gap-4">
+          <app-button (click)="prevPage()" [disabled]="currentPage() === 1" [icon]="'chevron_left'" [iconPosition]="'right'" [label]="''" />
+
+          <span>Page {{currentPage()}} of {{totalPages()}}</span>
+
+          <app-button
+            (click)="nextPage()"
+            [icon]="'chevron_right'"
+            [disabled]="currentPage() === totalPages()"
+            [iconPosition]="'right'"
+            [label]="''"
+          />
+        </div>
+      </mat-tab>
+      <mat-tab label="New Arrivals">Content 2</mat-tab>
+      <mat-tab label="Sale">Content 3</mat-tab>
+    </mat-tab-group>
+  </div>
+</div>
