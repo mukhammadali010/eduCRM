@@ -7,6 +7,5 @@ import { MatButtonModule } from '@angular/material/button';
   selector: 'app-cart',
   imports: [MatIconModule, MatBadgeModule, MatIconModule, MatButtonModule],
   templateUrl: './cart.component.html',
-  styleUrl: './cart.component.scss',
 })
 export class CartComponent {}

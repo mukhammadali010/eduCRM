@@ -6,7 +6,6 @@ import { MatIconModule } from '@angular/material/icon';
   selector: 'app-button',
   imports: [MatIconModule, NgClass],
   templateUrl: './button.component.html',
-  styleUrl: './button.component.scss',
 })
 export class ButtonComponent {
   label = input<string>('Click me');
