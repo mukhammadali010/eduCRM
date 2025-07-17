@@ -4,7 +4,7 @@ import { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
 @Component({
   selector: 'app-input',
   imports: [MatIconModule],
-  templateUrl: './input.component.html',
+  templateUrl: './input.html',
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,

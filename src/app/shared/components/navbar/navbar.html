@@ -1,0 +1,17 @@
+<header class="sticky top-0 z-50 bg-white">
+  <div class="container mx-auto flex items-center justify-between border-b border-primary">
+    <app-logo />
+    <app-search />
+    <div class="flex items-center gap-5">
+      <app-cart />
+      <app-button
+        [label]="'Login'"
+        [bgcolor]="'bg-primary'"
+        [textcolor]="'text-white'"
+        [type]="'submit'"
+        [icon]="'login'"
+        [iconPosition]="'left'"
+      />
+    </div>
+  </div>
+</header>

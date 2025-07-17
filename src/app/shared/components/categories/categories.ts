@@ -1,7 +1,7 @@
 import { Component, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatSliderModule } from '@angular/material/slider';
-import { ButtonComponent } from '../button/button.component';
+import { ButtonComponent } from '../button/button';
 export interface Category {
   name: string;
   count: number;
@@ -12,7 +12,6 @@ export interface Category {
   standalone: true,
   imports: [CommonModule, MatSliderModule, ButtonComponent],
   templateUrl: './categories.html',
-  styleUrl: './categories.scss',
 })
 export class Categories {
   categories: Category[] = [

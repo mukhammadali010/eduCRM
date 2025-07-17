@@ -1,9 +1,9 @@
 import { Component, computed, signal } from '@angular/core';
 import { MatTabsModule } from '@angular/material/tabs';
 import { Card } from '../../shared/components/card/card';
-import { InputComponent } from '../../shared/components/input/input.component';
+import { InputComponent } from '../../shared/components/input/input';
 import { MatIconModule } from '@angular/material/icon';
-import { ButtonComponent } from '../../shared/components/button/button.component';
+import { ButtonComponent } from '../../shared/components/button/button';
 import { FormsModule } from '@angular/forms';
 
 export interface Options {

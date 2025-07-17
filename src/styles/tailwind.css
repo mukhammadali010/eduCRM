@@ -2,7 +2,7 @@
 @import 'tailwindcss';
 
 @theme {
-  --font-base: 'Nunito';
+  --font-base: 'Nunito', 'sans-serif';
   --font-heading: 'Outfit';
 
   --color-primary: #3f51b5;
@@ -10,7 +10,7 @@
   --color-primary-hover: #1e40af;
   --color-accent: #009688;
   --color-text: #333333;
-  --color-seccess: #10b981;
+  --color-success: #10b981;
   --color-background: #f9fafb;
   --color-surface: #ffffff;
   --color-muted: #6b7280;

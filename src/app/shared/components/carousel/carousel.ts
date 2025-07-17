@@ -1,15 +1,14 @@
 import { Component, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ButtonComponent } from '../button/button.component';
+import { ButtonComponent } from '../button/button';
 
 @Component({
   selector: 'app-carousel',
   standalone: true,
   imports: [CommonModule, ButtonComponent],
-  templateUrl: './carousel.component.html',
-  styleUrls: ['./carousel.component.scss'],
+  templateUrl: './carousel.html',
 })
-export class CarouselComponent {
+export class Carousel {
   slides = [
     {
       title: 'UPGRADE YOUR LIFE WITH THE LATEST',
