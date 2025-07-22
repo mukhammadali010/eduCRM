@@ -5,25 +5,12 @@ import { InputComponent } from '../../shared/components/input/input';
 import { MatIconModule } from '@angular/material/icon';
 import { ButtonComponent } from '../../shared/components/button/button';
 import { FormsModule } from '@angular/forms';
-
-export interface Options {
-  label: string;
-  value: string;
-}
-
-export interface Product {
-  name: string;
-  price: number;
-  discountPrice?: number;
-  discountLabel?: string;
-  image: string;
-}
+import { Options, Product } from '../models/cards-blok.model';
 
 @Component({
   selector: 'app-cards-blok',
   imports: [MatTabsModule, Card, InputComponent, MatIconModule, ButtonComponent, FormsModule],
   templateUrl: './cards-blok.html',
-  styleUrl: './cards-blok.scss',
 })
 export class CardsBlok {
   options = signal<Options[]>([

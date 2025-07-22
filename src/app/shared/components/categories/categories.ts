@@ -9,7 +9,6 @@ export interface Category {
 
 @Component({
   selector: 'app-categories',
-  standalone: true,
   imports: [CommonModule, MatSliderModule, ButtonComponent],
   templateUrl: './categories.html',
 })
