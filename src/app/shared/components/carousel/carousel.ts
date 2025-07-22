@@ -1,51 +1,43 @@
-import { Component, signal } from '@angular/core';
+import { Component, CUSTOM_ELEMENTS_SCHEMA, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { register } from 'swiper/element/bundle';
+import { CarouselPage } from '../carousel-page/carousel-page';
 import { ButtonComponent } from '../button/button';
+
+register();
 
 @Component({
   selector: 'app-carousel',
   standalone: true,
-  imports: [CommonModule, ButtonComponent],
+  imports: [CommonModule, CarouselPage, ButtonComponent],
   templateUrl: './carousel.html',
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class Carousel {
-  slides = [
+  carouselItems = signal([
     {
-      title: 'UPGRADE YOUR LIFE WITH THE LATEST',
-      highlight: 'TECH',
-      desc: 'Explore our exclusive range of smartphones, laptops, tablets and gadgets — designed to keep you ahead in the digital world.',
-      image: 'https://cdn.pixabay.com/photo/2015/01/21/14/14/apple-606761_1280.jpg',
+      label: 'Welcome to TechZone',
+      title: 'MacBook',
+      titleChild: 'Pro',
+      text: 'Now available at the best price',
+      buttonLabel: 'Buy now',
+      imageUrl: 'https://cdn.pixabay.com/photo/2015/01/21/14/14/apple-606761_1280.jpg',
     },
     {
-      title: 'DISCOVER SMARTER',
-      highlight: 'LIFESTYLE',
-      desc: 'Shop cutting-edge tech, from wireless earbuds to smartwatches, and turn your everyday into something smarter.',
-      image: 'https://images.unsplash.com/photo-1734441996803-6fe7d41491db?q=80&w=1035&auto=format&fit=crop',
+      label: 'Discover the Future',
+      title: 'iPhone',
+      titleChild: '15 Pro Max',
+      text: 'Smartphone with incredible camera and performance',
+      buttonLabel: 'Order now',
+      imageUrl: 'https://images.unsplash.com/photo-1517336714731-489689fd1ca8?auto=format&fit=crop&w=800&q=80',
     },
     {
-      title: 'YOUR FUTURE DESERVES',
-      highlight: 'POWER',
-      desc: 'Get performance-driven laptops and high-end smartphones for work, play, and everything in between — all in one place.',
-      image: 'https://images.unsplash.com/photo-1697545806245-9795b6056141?q=80&w=1674&auto=format&fit=crop',
+      label: 'Boost Your Productivity',
+      title: 'iPad',
+      titleChild: 'Air 5',
+      text: 'Lightweight, powerful and perfect for work and play',
+      buttonLabel: 'Shop now',
+      imageUrl: 'https://images.unsplash.com/photo-1603791440384-56cd371ee9a7?auto=format&fit=crop&w=800&q=80',
     },
-  ];
-
-  activeIndex = signal(0);
-  typedTitle = signal('');
-  typedHighlight = signal('');
-
-  constructor() {
-    this.startAutoSlide();
-  }
-
-  startAutoSlide() {
-    setInterval(() => {
-      const next = (this.activeIndex() + 1) % this.slides.length;
-      this.activeIndex.set(next);
-    }, 7000);
-  }
-
-  setIndex(index: number) {
-    this.activeIndex.set(index);
-  }
+  ]);
 }

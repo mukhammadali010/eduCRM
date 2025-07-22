@@ -11,7 +11,7 @@ export class ButtonComponent {
   type = input<'button' | 'submit' | 'reset' | 'custom'>('button');
   disabled = input<boolean>(false);
   textcolor = input<string>('');
-  bgcolor = input<'bg-primary' | 'bg-secondary' | 'default'>('default');
+  bgcolor = input<string>('');
   icon = input<string>('');
   iconPosition = input<string>('');
   buttonClick = output<void>();

@@ -1,0 +1,11 @@
+<div class="flex items-center justify-between">
+  <div class="py-16 px-12">
+    <p class="text-sm uppercase font-medium">{{label()}}</p>
+    <h1 class="text-6xl font-black uppercase">{{title()}} <span class="text-primary-600">{{titleChild()}}</span></h1>
+    <p class="text-sm text-muted">{{text()}}</p>
+    <ng-content></ng-content>
+  </div>
+  <div class="w-1/2">
+    <img width="100%" src="{{imageUrl()}}" alt="image" />
+  </div>
+</div>

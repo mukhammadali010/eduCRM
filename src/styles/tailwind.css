@@ -5,16 +5,83 @@
   --font-base: 'Nunito', 'sans-serif';
   --font-heading: 'Outfit';
 
-  --color-primary: #3f51b5;
-  --color-secondary: #f5f5f5;
-  --color-primary-hover: #1e40af;
-  --color-accent: #009688;
-  --color-text: #333333;
-  --color-success: #10b981;
-  --color-background: #f9fafb;
-  --color-surface: #ffffff;
-  --color-muted: #6b7280;
-  --color-danger: #ef4444;
+  /* primary colors */
+  --color-primary-50: #eef2ff;
+  --color-primary-100: #e0e7ff;
+  --color-primary-200: #c7d2fe;
+  --color-primary-300: #a5b4fc;
+  --color-primary-400: #818cf8;
+  --color-primary-500: #6366f1;
+  --color-primary-600: #4f46e5;
+  --color-primary-700: #4338ca;
+  --color-primary-800: #3730a3;
+  --color-primary-900: #312e81;
+  --color-primary-950: #1e1b4b;
+
+  /* secondary colors */
+  --color-secondary-50: #fefefe;
+  --color-secondary-100: #fcfcfc;
+  --color-secondary-200: #f9f9f9;
+  --color-secondary-300: #f5f5f5;
+  --color-secondary-400: #e5e5e5;
+  --color-secondary-500: #d4d4d4;
+  --color-secondary-600: #a3a3a3;
+  --color-secondary-700: #737373;
+  --color-secondary-800: #525252;
+  --color-secondary-900: #3f3f3f;
+  --color-secondary-950: #262626;
+
+  /* Accent colors */
+  --color-accent-50: #e0f2f1;
+  --color-accent-100: #b2dfdb;
+  --color-accent-200: #80cbc4;
+  --color-accent-300: #4db6ac;
+  --color-accent-400: #26a69a;
+  --color-accent-500: #009688;
+  --color-accent-600: #00897b;
+  --color-accent-700: #00796b;
+  --color-accent-800: #00695c;
+  --color-accent-900: #004d40;
+  --color-accent-950: #002e26;
+
+  /* Success colors */
+  --color-success-50: #ecfdf5;
+  --color-success-100: #d1fae5;
+  --color-success-200: #a7f3d0;
+  --color-success-300: #6ee7b7;
+  --color-success-400: #34d399;
+  --color-success-500: #10b981;
+  --color-success-600: #059669;
+  --color-success-700: #047857;
+  --color-success-800: #065f46;
+  --color-success-900: #064e3b;
+  --color-success-950: #022c22;
+
+  /* Danger colors */
+  --color-danger-50: #fef2f2;
+  --color-danger-100: #fee2e2;
+  --color-danger-200: #fecaca;
+  --color-danger-300: #fca5a5;
+  --color-danger-400: #f87171;
+  --color-danger-500: #ef4444;
+  --color-danger-600: #dc2626;
+  --color-danger-700: #b91c1c;
+  --color-danger-800: #991b1b;
+  --color-danger-900: #7f1d1d;
+  --color-danger-950: #450a0a;
+
+  /* Muted colors */
+  --color-muted-50: #f9fafb;
+  --color-muted-100: #f3f4f6;
+  --color-muted-200: #e5e7eb;
+  --color-muted-300: #d1d5db;
+  --color-muted-400: #9ca3af;
+  --color-muted-500: #6b7280;
+  --color-muted-600: #4b5563;
+  --color-muted-700: #374151;
+  --color-muted-800: #1f2937;
+  --color-muted-900: #111827;
+  --color-muted-950: #0b0f19;
 
   --radius-sm: 0.25rem;
   --radius-md: 0.5rem;
@@ -90,23 +157,6 @@
 
   .text-muted {
     color: var(--color-muted);
-  }
-
-  .btn {
-    @apply rounded-md px-4 py-2 font-medium text-white transition duration-300;
-    background-color: var(--color-primary);
-  }
-
-  .btn:hover {
-    background-color: var(--color-primary-hover);
-  }
-
-  .btn-accent {
-    background-color: var(--color-accent);
-  }
-
-  .btn-danger {
-    background-color: var(--color-danger);
   }
 
   .card {
