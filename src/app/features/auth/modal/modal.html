@@ -1,0 +1,26 @@
+<div class="p-[50px]">
+  <p class="text-center text-2xl">
+    <span
+      (click)="setTab('login')"
+      (keydown.enter)="setTab('login')"
+      [class.text-primary-500]="activeTab()=== 'login'"
+      class="cursor-pointer"
+      tabindex="0"
+      >Login</span
+    >
+    |
+    <span
+      (click)="setTab('register')"
+      (keydown.enter)="setTab('register')"
+      [class.text-primary-500]="activeTab()==='register'"
+      class="cursor-pointer"
+      tabindex="0"
+      >Register</span
+    >
+  </p>
+  @if (activeTab() === 'login') {
+  <app-login />
+  }@else if (activeTab() === 'register') {
+  <app-register />
+  }
+</div>

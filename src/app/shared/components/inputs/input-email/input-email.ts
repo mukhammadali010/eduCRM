@@ -2,18 +2,18 @@ import { Component, forwardRef, input, signal } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
 import { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
 @Component({
-  selector: 'app-input',
+  selector: 'app-input-email',
   imports: [MatIconModule],
-  templateUrl: './input.html',
+  templateUrl: './input-email.html',
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
-      useExisting: forwardRef(() => InputComponent),
+      useExisting: forwardRef(() => InputEmail),
       multi: true,
     },
   ],
 })
-export class InputComponent implements ControlValueAccessor {
+export class InputEmail implements ControlValueAccessor {
   type = input<'text' | 'number' | 'password' | 'email' | 'search' | 'textarea' | 'select'>();
   options = input<{ label: string; value: string | number }[]>([]);
   placeholder = input<string>('');
@@ -40,15 +40,6 @@ export class InputComponent implements ControlValueAccessor {
   setDisabledState(isDisabled: boolean): void {
     this.isDisabled.set(isDisabled);
   }
-
-  // updateValue(event: Event): void {
-  //   const target = event.target as HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement;
-  //   const inputValue = target.value;
-  //   const value: string | number = this.type() === 'number' ? Number(inputValue) : inputValue;
-  //   this.value.set(value);
-  //   this.onChange(value);
-  //   this.onTouched();
-  // }
   updateValue(value: string | number): void {
     this.value.set(value);
     this.onChange(value);

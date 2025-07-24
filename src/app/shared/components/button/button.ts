@@ -14,5 +14,6 @@ export class ButtonComponent {
   bgcolor = input<string>('');
   icon = input<string>('');
   iconPosition = input<string>('');
+  width = input<string>('');
   buttonClick = output<void>();
 }
