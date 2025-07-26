@@ -5,6 +5,7 @@
     <div class="flex items-center gap-5">
       <app-cart />
       <app-button
+        (buttonClick)="openDialog()"
         [label]="'Login'"
         [bgcolor]="'bg-primary-600'"
         [textcolor]="'text-white'"

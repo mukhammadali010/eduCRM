@@ -1,7 +1,6 @@
 import { Component, computed, signal } from '@angular/core';
 import { MatTabsModule } from '@angular/material/tabs';
 import { Card } from '../../shared/components/card/card';
-import { InputComponent } from '../../shared/components/input/input';
 import { MatIconModule } from '@angular/material/icon';
 import { ButtonComponent } from '../../shared/components/button/button';
 import { FormsModule } from '@angular/forms';
@@ -9,7 +8,7 @@ import { Options, Product } from '../../shared/components/models/cards-blok.mode
 
 @Component({
   selector: 'app-cards-blok',
-  imports: [MatTabsModule, Card, InputComponent, MatIconModule, ButtonComponent, FormsModule],
+  imports: [MatTabsModule, Card, MatIconModule, ButtonComponent, FormsModule],
   templateUrl: './cards-blok.html',
 })
 export class CardsBlok {

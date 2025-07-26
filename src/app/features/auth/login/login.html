@@ -1,0 +1,16 @@
+<form action="" class="">
+  <p>Enter your username and password to login.</p>
+  <app-input-email [placeholder]="'almamun_uxui@outlook.com'" />
+  <div class="mt-4">
+    <app-input-password [placeholder]="'***********'" [type]="'password'" />
+  </div>
+  <p class="ml-44 mt-4 text-primary-500">Forgot Password?</p>
+  <app-button [width]="'w-full'" [bgcolor]="'bg-primary-600'" [textcolor]="'text-white'" label="Login" />
+  <p class="bg-secondary-400 relative p-[0.5px] flex items-center justify-center mt-12">
+    <span class="bg-white absolute">Or login with</span>
+  </p>
+  <div class="mt-7 mb-4">
+    <app-button [width]="'w-full'" [label]="'Login with Google'" />
+  </div>
+  <app-button [width]="'w-full'" [label]="'Login with Facebook'" />
+</form>

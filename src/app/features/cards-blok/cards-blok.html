@@ -1,7 +1,7 @@
 <div class="flex items-end flex-col relative pb-7">
   <div class="flex items-center mt-3 text-text absolute -top-2 z-10 max-[576px]:hidden">
     <span>Sort by:</span>
-    <app-input [(ngModel)]="selectedSort" [type]="'select'" [options]="options()" />
+    <app-input-select [(ngModel)]="selectedSort" [type]="'select'" [options]="options()" />
   </div>
   <div class="w-full flex items-start justify-between">
     <mat-tab-group [mat-stretch-tabs]="false" [style]="'w-full'" animationDuration="0ms">

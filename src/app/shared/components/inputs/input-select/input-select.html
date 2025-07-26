@@ -1,0 +1,16 @@
+<div
+  class="form-group flex items-center gap-2 border border-gray-300 rounded-md px-4 py-2 shadow-sm bg-white focus-within:ring-2 focus-within:ring-primary-500 transition-all duration-300 w-full max-w-md"
+>
+  <div class="form-group w-full max-w-md">
+    <select
+      (change)="updateValue(selectRef.value)"
+      [disabled]="isDisabled()"
+      #selectRef
+      class="w-full px-3 py-2 text-sm text-gray-800 outline-none"
+    >
+      @for (option of options(); track option.value) {
+      <option [value]="option.value" [selected]="option.value === value()">{{ option.label }}</option>
+      }
+    </select>
+  </div>
+</div>

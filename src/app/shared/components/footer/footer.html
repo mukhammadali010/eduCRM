@@ -1,0 +1,33 @@
+<footer class="bg-secondary-200">
+  <div class="container mx-auto flex items-center justify-between p-3">
+    @for(item of footerData().topSections; track $index){
+    <div [class.border-r]=" $index < footerData().topSections.length - 1 " class="w-1/4 p-3 border-secondary-500">
+      <img src="{{item.icon}}" alt="image" />
+      <h4>{{item.title}}</h4>
+      <p class="text-sm text-secondary-700">{{item.description}}</p>
+    </div>
+    }
+  </div>
+  <div class="container mx-auto bg-primary-100 flex items-center justify-between p-3">
+    <app-logo />
+    @for (item of footerData().middleSection; track $index) {
+    <p>{{item}}</p>
+    }
+  </div>
+
+  <div class="container mx-auto bg-secondary-200 flex items-center justify-between p-3">
+    @for(section of footerData().bottomSections; track $index) {
+    <div class="space-y-4">
+      <div class="flex items-center gap-2">
+        <img [src]="section.icon" alt="icon" class="w-5 h-5" />
+        <h4 class="font-semibold text-lg">{{ section.title }}</h4>
+      </div>
+      <ul class="space-y-1 text-sm text-secondary-700">
+        @for(item of section.items; track $index) {
+        <li class="hover:text-primary-500 cursor-pointer transition">{{ item }}</li>
+        }
+      </ul>
+    </div>
+    }
+  </div>
+</footer>
