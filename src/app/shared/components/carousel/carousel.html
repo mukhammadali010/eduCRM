@@ -1,0 +1,16 @@
+<swiper-container class="w-full h-[400px]" pagination="true" autoplay-delay="3000" pagination-dynamic-bullets="true">
+  @for( item of carouselItems(); track $index){
+  <swiper-slide>
+    <app-carousel-page
+      [label]="item.label"
+      [title]="item.title"
+      [titleChild]="item.titleChild"
+      [text]="item.text"
+      [imageUrl]="item.imageUrl"
+    >
+      <app-button [label]="'Buy now'" [bgcolor]="'bg-primary-600'" [textcolor]="'text-white'" />
+    </app-carousel-page>
+  </swiper-slide>
+
+  }
+</swiper-container>
