@@ -4,12 +4,11 @@ import { Card } from '../../shared/components/card/card';
 import { MatIconModule } from '@angular/material/icon';
 import { ButtonComponent } from '../../shared/components/button/button';
 import { FormsModule } from '@angular/forms';
-import { Options, Product } from '../models/cards-blok.model';
-import { InputSelect } from '../../shared/components/inputs/input-select/input-select';
+import { Options, Product } from '../../shared/components/models/cards-blok.model';
 
 @Component({
   selector: 'app-cards-blok',
-  imports: [MatTabsModule, Card, MatIconModule, ButtonComponent, FormsModule, InputSelect],
+  imports: [MatTabsModule, Card, MatIconModule, ButtonComponent, FormsModule],
   templateUrl: './cards-blok.html',
 })
 export class CardsBlok {
