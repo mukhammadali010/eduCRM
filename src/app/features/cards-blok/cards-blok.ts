@@ -5,7 +5,7 @@ import { InputComponent } from '../../shared/components/input/input';
 import { MatIconModule } from '@angular/material/icon';
 import { ButtonComponent } from '../../shared/components/button/button';
 import { FormsModule } from '@angular/forms';
-import { Options, Product } from '../models/cards-blok.model';
+import { Options, Product } from '../../shared/components/models/cards-blok.model';
 
 @Component({
   selector: 'app-cards-blok',

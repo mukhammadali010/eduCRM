@@ -2,10 +2,7 @@ import { Component, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatSliderModule } from '@angular/material/slider';
 import { ButtonComponent } from '../button/button';
-export interface Category {
-  name: string;
-  count: number;
-}
+import { Category } from '../models/categories.model';
 
 @Component({
   selector: 'app-categories',
@@ -13,7 +10,7 @@ export interface Category {
   templateUrl: './categories.html',
 })
 export class Categories {
-  categories: Category[] = [
+  categories = signal<Category[]>([
     { name: 'Smartphones', count: 58 },
     { name: 'Laptops', count: 37 },
     { name: 'Tablets', count: 24 },
@@ -23,13 +20,13 @@ export class Categories {
     { name: 'Keyboards & Mice', count: 29 },
     { name: 'Gaming Accessories', count: 19 },
     { name: 'Chargers & Cables', count: 22 },
-  ];
+  ]);
 
-  min = signal(0);
-  max = signal(5000);
+  min = signal<number>(0);
+  max = signal<number>(5000);
 
-  startPrice = signal(300);
-  endPrice = signal(600);
+  startPrice = signal<number>(300);
+  endPrice = signal<number>(600);
 
   updateStart(event: Event) {
     const input = event.target as HTMLInputElement;

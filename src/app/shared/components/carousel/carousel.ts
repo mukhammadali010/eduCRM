@@ -1,14 +1,10 @@
 import { Component, CUSTOM_ELEMENTS_SCHEMA, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { register } from 'swiper/element/bundle';
 import { CarouselPage } from '../carousel-page/carousel-page';
 import { ButtonComponent } from '../button/button';
 
-register();
-
 @Component({
   selector: 'app-carousel',
-  standalone: true,
   imports: [CommonModule, CarouselPage, ButtonComponent],
   templateUrl: './carousel.html',
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
