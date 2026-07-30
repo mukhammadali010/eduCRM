@@ -19,7 +19,8 @@
     "lint-staged": "lint-staged",
     "playwright": "playwright",
     "playwright:test": "playwright test",
-    "playwright:headed": "playwright test --headed"
+    "playwright:headed": "playwright test --headed",
+    "gen:api": "openapi-typescript https://majid-l.github.io/swagger-ui-docs/openapi.yaml -o src/app/shared/components/models/backend/backend.interface.ts && npm run format && npm run lint:fix"
   },
   "lint-staged": {
     "*.{ts,js}": [
@@ -80,6 +81,7 @@
     "karma-jasmine": "^5.1.0",
     "karma-jasmine-html-reporter": "^2.1.0",
     "lint-staged": "^16.1.0",
+    "openapi-typescript": "^7.8.0",
     "postcss": "^8.5.5",
     "prettier": "^3.5.3",
     "prettier-plugin-organize-attributes": "^1.0.0",

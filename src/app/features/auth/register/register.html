@@ -1,16 +1,63 @@
-<form action="" class="">
+<!-- novalidate: the browser's own constraint UI would swallow the submit event before
+     Angular can run the reactive validators and render the messages below. -->
+<form (ngSubmit)="onSubmit()" [formGroup]="registerForm" novalidate>
   <p>Enter your username and password to login.</p>
   <div class="mt-4 mb-4">
-    <app-input-default placeholder="Username" />
+    <app-input-default [placeholder]="'Name'" formControlName="name" />
+    @if (registerForm.controls.name.invalid && registerForm.controls.name.touched) {
+    <div class="text-red-500 text-sm">
+      @if (registerForm.controls.name.hasError('required')) {
+      <span>* Name is required.</span>
+      } @if (registerForm.controls.name.hasError('minlength')) {
+      <span>Name must be at least 2 characters.</span>
+      }
+    </div>
+    }
   </div>
-  <app-input-email [placeholder]="'almamun_uxui@outlook.com'" />
-  <div class="mt-4">
-    <app-input-password [placeholder]="'Password'" [type]="'password'" />
-  </div>
+
   <div class="mt-4 mb-4">
-    <app-input-password [placeholder]="'Confirm Password'" [type]="'password'" />
+    <app-input-default [placeholder]="'Username'" formControlName="username" />
+    @if (registerForm.controls.username.invalid && registerForm.controls.username.touched) {
+    <span class="text-red-500 text-sm">* Username is required.</span>
+    }
   </div>
-  <app-button [width]="'w-full'" [bgcolor]="'bg-primary-600'" [textcolor]="'text-white'" label="Register" />
+
+  <app-input-email [placeholder]="'almamun_uxui@outlook.com'" formControlName="email" />
+  @if (registerForm.controls.email.invalid && registerForm.controls.email.touched) { @if (registerForm.controls.email.hasError('required'))
+  {
+  <span class="text-red-500 text-sm">* Email is required.</span>
+  } @else if (registerForm.controls.email.hasError('email')) {
+  <span class="text-red-500 text-sm">Enter a valid email address.</span>
+  } }
+
+  <div class="mt-4 mb-4">
+    <app-input-default [placeholder]="'Phone number'" formControlName="phone" />
+    @if (registerForm.controls.phone.invalid && registerForm.controls.phone.touched) {
+    <span class="text-red-500 text-sm">* Phone is required.</span>
+    }
+  </div>
+
+  <div class="mt-4 mb-4">
+    <app-input-password [placeholder]="'Password'" [type]="'password'" formControlName="password" />
+    @if (registerForm.controls.password.invalid && registerForm.controls.password.touched) {
+    <span class="text-red-500 text-sm">* Password is required.</span>
+    }
+  </div>
+
+  @if (errorMessage()) {
+  <p class="text-red-500 text-sm mb-4">{{ errorMessage() }}</p>
+  } @if (successMessage()) {
+  <p class="text-green-600 text-sm mb-4">{{ successMessage() }}</p>
+  }
+
+  <app-button
+    [width]="'w-full'"
+    [bgcolor]="'bg-primary-600'"
+    [textcolor]="'text-white'"
+    [type]="'submit'"
+    [disabled]="isSubmitting()"
+    [label]="isSubmitting() ? 'Creating account...' : 'Register'"
+  />
   <p class="bg-secondary-400 relative p-[0.5px] flex items-center justify-center mt-12">
     <span class="bg-white absolute">Or Register with</span>
   </p>

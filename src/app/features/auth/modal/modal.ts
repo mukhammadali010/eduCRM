@@ -10,9 +10,7 @@ import { Register } from '../register/register';
 })
 export class Modal {
   data = inject(MAT_DIALOG_DATA);
-
   activeTab = signal<'login' | 'register'>('register');
-
   setTab(tab: 'login' | 'register') {
     this.activeTab.set(tab);
   }

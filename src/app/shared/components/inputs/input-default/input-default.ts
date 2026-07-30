@@ -40,9 +40,13 @@ export class InputDefault implements ControlValueAccessor {
   setDisabledState(isDisabled: boolean): void {
     this.isDisabled.set(isDisabled);
   }
+  /** Reactive forms only marks a control touched when the accessor says so. */
+  onBlur(): void {
+    this.onTouched();
+  }
+
   updateValue(value: string | number): void {
     this.value.set(value);
     this.onChange(value);
-    this.onTouched();
   }
 }

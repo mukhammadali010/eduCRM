@@ -1,11 +1,29 @@
-<form action="" class="">
+<!-- novalidate: the browser's own constraint UI would swallow the submit event before
+     Angular can run the reactive validators and render the messages below. -->
+<form (ngSubmit)="onSubmit()" [formGroup]="loginForm" novalidate>
   <p>Enter your username and password to login.</p>
-  <app-input-email [placeholder]="'almamun_uxui@outlook.com'" />
+  <app-input-default [placeholder]="'almamun_uxui@outlook.com'" formControlName="username" />
+  @if (loginForm.controls.username.invalid && loginForm.controls.username.touched) {
+  <span class="text-red-500 text-sm">* Username is required.</span>
+  }
   <div class="mt-4">
-    <app-input-password [placeholder]="'***********'" [type]="'password'" />
+    <app-input-password [placeholder]="'***********'" [type]="'password'" formControlName="password" />
+    @if (loginForm.controls.password.invalid && loginForm.controls.password.touched) {
+    <span class="text-red-500 text-sm">* Password is required.</span>
+    }
   </div>
   <p class="ml-44 mt-4 text-primary-500">Forgot Password?</p>
-  <app-button [width]="'w-full'" [bgcolor]="'bg-primary-600'" [textcolor]="'text-white'" label="Login" />
+  @if (errorMessage()) {
+  <p class="text-red-500 text-sm mt-4">{{ errorMessage() }}</p>
+  }
+  <app-button
+    [width]="'w-full'"
+    [bgcolor]="'bg-primary-600'"
+    [textcolor]="'text-white'"
+    [type]="'submit'"
+    [disabled]="isSubmitting()"
+    [label]="isSubmitting() ? 'Logging in...' : 'Login'"
+  />
   <p class="bg-secondary-400 relative p-[0.5px] flex items-center justify-center mt-12">
     <span class="bg-white absolute">Or login with</span>
   </p>
